@@ -58,7 +58,7 @@ export function Cart() {
           title="Your Cart is Empty"
           description="You haven't added anything to your order yet. Check out today's freshly smashed burgers, crispy wings, and slow-cooked biryani!"
           actionLabel="Explore Menu"
-          actionLink="/"
+          actionLink="/menu#menu-lineup"
         />
       </div>
     );
@@ -68,7 +68,7 @@ export function Cart() {
     <div className="cart-page-content">
       {/* Top Breadcrumb / Return */}
       <div className="cart-nav-bar">
-        <Link to="/" className="back-link">
+        <Link to="/menu#menu-lineup" className="back-link">
           <ArrowLeft size={18} />
           <span>Back to Menu</span>
         </Link>

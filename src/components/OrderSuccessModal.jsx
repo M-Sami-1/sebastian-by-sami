@@ -103,7 +103,7 @@ export function OrderSuccessModal({ orderDetails, onClose }) {
           </div>
 
           <div className="modal-actions">
-            <Link to="/" className="btn-brand modal-btn" onClick={onClose}>
+            <Link to="/menu#menu-lineup" className="btn-brand modal-btn" onClick={onClose}>
               <span>Return to Menu</span>
               <ArrowRight size={18} />
             </Link>

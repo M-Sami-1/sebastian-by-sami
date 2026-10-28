@@ -25,7 +25,7 @@ export function ItemDetails({ menu = [], loading = false }) {
           title="Dish Not Found"
           description={`We couldn't find a menu item with ID #${id}. It may currently be unavailable or the link is invalid.`}
           actionLabel="Return to Menu"
-          actionLink="/"
+          actionLink="/menu#menu-lineup"
         />
       </div>
     );
@@ -56,7 +56,7 @@ export function ItemDetails({ menu = [], loading = false }) {
     <div className="item-details-page-content">
       {/* Return to menu link */}
       <nav className="item-details-nav" aria-label="Breadcrumb">
-        <Link to="/" className="back-link">
+        <Link to="/menu#menu-lineup" className="back-link">
           <ArrowLeft size={18} />
           <span>Back to Menu</span>
         </Link>

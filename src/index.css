@@ -4209,6 +4209,8 @@ button {
   .hero-reference-actions { gap: 0.42rem; }
   .hero-reference-primary, .hero-reference-secondary { min-height: 34px; padding: 0.4rem 0.6rem; font-size: 0.58rem; }
   .hero-reference-inner { min-height: 390px; }
+  .cart-item-card { grid-template-columns: 48px minmax(0, 1fr); }
+  .cart-item-thumb-link { width: 48px; height: 48px; }
   .lineup-controls-card { padding: 0.8rem; }
   .btn-filter-toggle { padding: 0.48rem 0.7rem; font-size: 0.76rem; }
   .combo-content { padding: 1rem; }
@@ -4267,6 +4269,27 @@ button {
 @media (max-width: 500px) {
   html, body, #root, .app-shell, .main-content { width: 100%; max-width: 100%; min-width: 0; }
   html, body { overflow-x: clip; }
+  .cart-page-wrapper,
+  .cart-page-wrapper .section-container,
+  .cart-page-content,
+  .cart-layout-grid,
+  .cart-items-column,
+  .cart-summary-column,
+  .cart-list-card,
+  .cart-items-container,
+  .cart-pickup-preferences,
+  .retro-receipt-container,
+  .cart-checkout-actions {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .cart-layout-grid { grid-template-columns: minmax(0, 1fr); }
+  .cart-list-card { padding: clamp(0.8rem, 4vw, 1.25rem); }
+  .cart-item-card { grid-template-columns: 55px minmax(0, 1fr); min-width: 0; }
+  .cart-item-thumb-link { width: 55px; height: 55px; }
+  .cart-item-info, .cart-item-total-block { min-width: 0; }
+  .cart-item-name, .cart-item-description, .checkout-guarantee span { overflow-wrap: anywhere; }
   .category-filter { overflow: visible; padding-bottom: 0; }
   .category-filter-list { flex-wrap: wrap; gap: 0.3rem; }
   .category-pill { padding: 0.35rem 0.58rem; font-size: 0.72rem; }
