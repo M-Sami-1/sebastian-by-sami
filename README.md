@@ -229,5 +229,6 @@ The `CartProvider` provides a single source of truth for the entire application:
 ## 👨‍🍳 Author & Credits
 
 - **Identity**: SEBASTIAN Campus Canteen
-- **Developer**: SAM / SAMI
+- **Developer**: Muhammad Sami ([@M-Sami-1](https://github.com/M-Sami-1))
+- **Email**: miansamibaba857@gmail.com
 - **Course**: Advanced Client-side Programming (ACP) University Assignment
