@@ -27,7 +27,7 @@ const COMBOS_DATA = [
       description: "Two 100% fresh beef patties smashed thin on a 230°C flat top."
     },
     sideItems: [
-      { id: 4, name: "Peri-Peri Skinny Fries", price: 190, category: "Fast Food", image: "/assets/food/fries.webp" },
+      { id: 4, name: "Peri-Peri Skinny Fries", price: 190, category: "Fast Food", image: "/assets/food/fries.jpeg" },
       { id: 13, name: "Karak Cardamom Matka Chai", price: 70, category: "Drinks", image: "/assets/food/chai.webp" }
     ]
   },
@@ -36,7 +36,7 @@ const COMBOS_DATA = [
     name: "Sindhi Biryani Royal Duo",
     badge: "CHEF SPECIAL",
     badgeColor: "red",
-    image: "/assets/food/biryani.webp",
+    image: "/assets/food/chicken-baryani.jpg",
     description: "Slow-simmered basmati rice layered with tender spiced chicken, accompanied by crispy samosa chaat and hot tea.",
     itemsIncluded: [
       "Sindhi Dum Biryani Special",
@@ -51,7 +51,7 @@ const COMBOS_DATA = [
       name: "Sindhi Dum Biryani Special",
       price: 370,
       category: "Main Course",
-      image: "/assets/food/biryani.webp",
+      image: "/assets/food/chicken-baryani.jpg",
       description: "Fragrant long-grain aged basmati rice slow-cooked with bone-in spiced chicken."
     },
     sideItems: [
@@ -64,7 +64,7 @@ const COMBOS_DATA = [
     name: "Wings & Loaded Crunch Pack",
     badge: "SAVER VALUE",
     badgeColor: "dark",
-    image: "/assets/food/chicken-wings.webp",
+    image: "/assets/food/hot-honey-chicken-wings.jpg",
     description: "6 pieces of crisp buffalo chicken wings tossed in fiery red hot glaze, paired with cheesy loaded nacho chips.",
     itemsIncluded: [
       "Spicy Buffalo Wings (6 pcs)",
@@ -79,12 +79,12 @@ const COMBOS_DATA = [
       name: "Spicy Buffalo Wings (6 pcs)",
       price: 390,
       category: "Fast Food",
-      image: "/assets/food/chicken-wings.webp",
+      image: "/assets/food/hot-honey-chicken-wings.jpg",
       description: "Crisp bone-in chicken wings tossed in fiery red hot glaze."
     },
     sideItems: [
       { id: 12, name: "Cheesy Loaded Nacho Box", price: 260, category: "Snacks", image: "/assets/food/nachos.jpeg" },
-      { id: 14, name: "Iced Vanilla Cold Brew", price: 120, category: "Drinks", image: "/assets/food/coffee.webp" }
+      { id: 14, name: "Iced Vanilla Cold Brew", price: 120, category: "Drinks", image: "/assets/food/cold-brew.jpg" }
     ]
   }
 ];
