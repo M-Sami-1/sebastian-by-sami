@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-smash-burger" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#E52320" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2A1713" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-smash-burger)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#E52320" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Bun Top -->
+      <path d="M100 190 Q200 80 300 190 Z" fill="#D9822B" stroke="#8C4910" stroke-width="4"/>
+      <!-- Sesame seeds -->
+      <ellipse cx="160" cy="140" rx="4" ry="7" fill="#FDE4B3" transform="rotate(-20 160 140)"/>
+      <ellipse cx="200" cy="130" rx="4" ry="7" fill="#FDE4B3"/>
+      <ellipse cx="240" cy="145" rx="4" ry="7" fill="#FDE4B3" transform="rotate(25 240 145)"/>
+      <ellipse cx="180" cy="165" rx="4" ry="7" fill="#FDE4B3" transform="rotate(10 180 165)"/>
+      <ellipse cx="220" cy="168" rx="4" ry="7" fill="#FDE4B3" transform="rotate(-15 220 168)"/>
+      <!-- Lettuce -->
+      <path d="M85 195 Q130 180 170 195 Q210 180 250 195 Q280 180 315 195 Q300 215 270 210 Q220 220 170 205 Q120 220 85 195 Z" fill="#58A336"/>
+      <!-- Tomato -->
+      <rect x="95" y="205" width="210" height="18" rx="9" fill="#E23624"/>
+      <!-- Melted Cheese 1 -->
+      <path d="M90 222 L310 222 L290 255 L260 230 L220 260 L180 228 L140 255 L110 226 Z" fill="#FFB703"/>
+      <!-- Smashed Patty 1 -->
+      <rect x="80" y="220" width="240" height="26" rx="10" fill="#4A2511"/>
+      <!-- Melted Cheese 2 -->
+      <path d="M90 248 L310 248 L270 280 L230 252 L190 285 L150 254 L110 278 Z" fill="#FFB703"/>
+      <!-- Smashed Patty 2 -->
+      <rect x="75" y="246" width="250" height="28" rx="12" fill="#3D1C06"/>
+      <!-- Pickles -->
+      <ellipse cx="140" cy="245" rx="20" ry="8" fill="#75933C"/>
+      <ellipse cx="260" cy="245" rx="20" ry="8" fill="#75933C"/>
+      <!-- Bun Bottom -->
+      <rect x="95" y="274" width="210" height="35" rx="16" fill="#C47321" stroke="#8C4910" stroke-width="4"/>
+    
+</svg>

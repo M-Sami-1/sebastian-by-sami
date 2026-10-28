@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-favicon" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#E52320" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-favicon)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#FFF" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Bold S Logo -->
+      <circle cx="200" cy="200" r="160" fill="#E52320"/>
+      <text x="200" y="275" font-family="'Syne', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="220" text-anchor="middle" fill="#FFFFFF">S</text>
+    
+</svg>

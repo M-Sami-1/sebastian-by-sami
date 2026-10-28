@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-hot-honey-chicken" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFAA00" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2E1906" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-hot-honey-chicken)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#FFAA00" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Tenders -->
+      <path d="M90 220 C90 150 160 140 210 180 C260 140 330 180 310 260 C270 300 140 300 90 220 Z" fill="#B24F18" stroke="#742A05" stroke-width="4"/>
+      <path d="M140 180 C180 140 250 160 270 210 C250 260 170 260 140 180 Z" fill="#C66224"/>
+      <!-- Golden Honey Glaze -->
+      <path d="M120 180 Q160 140 220 160 Q260 180 280 220 C270 250 220 270 180 250 C140 240 110 210 120 180 Z" fill="#FFB703" opacity="0.85"/>
+      <circle cx="150" cy="220" r="3" fill="#FFE58F"/>
+      <circle cx="190" cy="200" r="4" fill="#FFE58F"/>
+      <circle cx="240" cy="210" r="3" fill="#FFE58F"/>
+      <!-- Chili flakes -->
+      <polygon points="170,190 176,194 172,200 166,196" fill="#E51D18"/>
+      <polygon points="210,180 218,184 214,190 208,186" fill="#E51D18"/>
+      <polygon points="230,225 236,229 232,235 226,231" fill="#E51D18"/>
+      <!-- Honey drips -->
+      <path d="M140 250 Q145 285 140 290 Q135 285 140 250 Z" fill="#FFB703"/>
+      <path d="M220 260 Q225 295 220 300 Q215 295 220 260 Z" fill="#FFB703"/>
+    
+</svg>

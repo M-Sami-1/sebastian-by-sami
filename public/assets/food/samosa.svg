@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-samosa" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FA8C16" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2B1A0A" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-samosa)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#FA8C16" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Golden Triangular Samosa -->
+      <polygon points="200,120 110,250 290,250" fill="#E67E22" stroke="#A04000" stroke-width="4"/>
+      <!-- Samosa folding ridge -->
+      <line x1="200" y1="120" x2="200" y2="250" stroke="#BA4A00" stroke-width="3" stroke-linecap="round"/>
+      <path d="M110 250 Q200 270 290 250" fill="#D35400"/>
+      <!-- Chaat drizzled yogurt & chutney -->
+      <path d="M140 210 Q160 230 190 215 Q220 200 250 220" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <path d="M150 225 Q180 240 210 225 Q240 210 260 230" stroke="#8E44AD" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <!-- Sev sprinkles -->
+      <line x1="160" y1="200" x2="175" y2="205" stroke="#F1C40F" stroke-width="3"/>
+      <line x1="220" y1="210" x2="235" y2="215" stroke="#F1C40F" stroke-width="3"/>
+      <line x1="190" y1="230" x2="205" y2="232" stroke="#F1C40F" stroke-width="3"/>
+    
+</svg>

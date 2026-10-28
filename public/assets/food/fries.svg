@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-fries" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFB703" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#261C09" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-fries)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#FFB703" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Red Fry Cup / Carton -->
+      <path d="M130 170 L150 310 Q200 325 250 310 L270 170 Z" fill="#D91E18" stroke="#8C100C" stroke-width="4"/>
+      <!-- Fries bursting out -->
+      <rect x="155" y="90" width="16" height="120" rx="3" fill="#FFC837" stroke="#D48806" stroke-width="2" transform="rotate(-12 155 90)"/>
+      <rect x="180" y="75" width="18" height="130" rx="3" fill="#FFD666" stroke="#D48806" stroke-width="2" transform="rotate(-3 180 75)"/>
+      <rect x="210" y="80" width="17" height="125" rx="3" fill="#FFC837" stroke="#D48806" stroke-width="2" transform="rotate(10 210 80)"/>
+      <rect x="235" y="100" width="16" height="115" rx="3" fill="#FFD666" stroke="#D48806" stroke-width="2" transform="rotate(22 235 100)"/>
+      <rect x="140" y="115" width="15" height="100" rx="3" fill="#FAAD14" stroke="#D48806" stroke-width="2" transform="rotate(-25 140 115)"/>
+      <!-- Carton Front lip -->
+      <path d="M130 170 Q200 200 270 170 L250 310 Q200 325 150 310 Z" fill="#E52320"/>
+      <!-- Star on carton -->
+      <polygon points="200,210 205,225 220,225 208,235 212,250 200,240 188,250 192,235 180,225 195,225" fill="#FFF"/>
+      <!-- Peri-peri specks -->
+      <circle cx="170" cy="110" r="2" fill="#E51D18"/>
+      <circle cx="190" cy="95" r="2" fill="#E51D18"/>
+      <circle cx="225" cy="115" r="2" fill="#E51D18"/>
+    
+</svg>

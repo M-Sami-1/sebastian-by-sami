@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="grad-lava-cake" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#722ED1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1F120E" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#grad-lava-cake)"/>
+  <!-- Decorative subtle background badge -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#722ED1" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.3"/>
+  
+      <!-- Plate -->
+      <ellipse cx="200" cy="265" rx="115" ry="40" fill="#E5E7EB" stroke="#9CA3AF" stroke-width="3"/>
+      <!-- Dark Chocolate Cake -->
+      <path d="M130 260 L145 180 Q200 170 255 180 L270 260 Z" fill="#3D1D16" stroke="#210F0A" stroke-width="3"/>
+      <!-- Cake Top -->
+      <ellipse cx="200" cy="180" rx="55" ry="18" fill="#4E271E"/>
+      <!-- Molten Chocolate Gush Cut -->
+      <path d="M170 205 Q200 195 230 205 L225 265 Q200 275 175 265 Z" fill="#1A0A06"/>
+      <!-- Liquid Ganache puddle -->
+      <ellipse cx="200" cy="262" rx="45" ry="12" fill="#200C07"/>
+      <!-- Scoop of Vanilla Gelato -->
+      <circle cx="200" cy="150" r="28" fill="#FFFDE7" stroke="#FFF9C4" stroke-width="2"/>
+      <!-- Mint sprig on ice cream -->
+      <ellipse cx="200" cy="125" rx="6" ry="3" fill="#2ECC71" transform="rotate(-30 200 125)"/>
+      <!-- Cocoa dusting -->
+      <circle cx="160" cy="260" r="2" fill="#4E271E"/>
+      <circle cx="240" cy="262" r="2" fill="#4E271E"/>
+    
+</svg>
