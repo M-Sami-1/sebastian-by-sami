@@ -45,7 +45,7 @@ A high-performance, responsive React web application for **SEBASTIAN by SAMI**. 
    - Viewport-safe, mobile-first order confirmation modal (`OrderSuccessModal`) with pickup token code and estimated prep time.
 
 7. **Bespoke Responsive Design & Real Assets**
-   - Electric red, deep charcoal, and warm vintage cream palette based on `Design_inspo`.
+   - Electric red, deep charcoal, and warm vintage cream palette with responsive, reduced-motion-aware interactions.
    - Iconic checkered flag ribbons and marquee ticker tapes.
    - Fully optimized for mobile phones (touch friendly, collapsible drawer), tablets, and high-res desktops.
    - Real food photography and brand logo/favicon assets with fallback support.
@@ -61,9 +61,8 @@ Assignment-ACP/
 │   │   ├── branding/         # Brand logo assets
 │   │   └── food/             # Real food photography & assets
 │   ├── menu.json             # Dynamic menu data source
-│   └── favicon.jpeg          # Official brand favicon
+│   ├── favicon.png           # Site favicon
 ├── src/
-│   ├── assets/               # Static assets
 │   ├── components/           # Reusable presentational & container components
 │   │   ├── AboutSection.jsx  # Brand philosophy & kitchen standards
 │   │   ├── Cart.jsx          # Dedicated cart container
@@ -191,15 +190,41 @@ The `CartProvider` provides a single source of truth for the entire application:
    ```
    Open your browser at `http://localhost:3000`.
 
-4. Build for production:
+4. Create an optimized production build:
    ```bash
    npm run build
    ```
 
-5. Preview production build locally:
+5. Preview the production build locally:
    ```bash
    npm run preview
    ```
+
+### Project Workflow
+
+1. Create a branch for a focused change.
+2. Install dependencies with `npm install`.
+3. Run the app with `npm run dev` and check the affected routes at desktop and narrow mobile widths.
+4. Keep menu changes in `public/menu.json`, reusable UI in `src/components/`, and shared styles in `src/index.css`.
+5. Run `npm run build` before opening a pull request.
+6. Include a short summary, screenshots for visual changes, and relevant notes about asset sources or behavior.
+
+### Menu Data and Assets
+
+- Edit menu entries in `public/menu.json`. Preserve each item's unique `id` and the category names used by the category filter.
+- Put public images under `public/assets/` and reference them with root-relative paths such as `/assets/food/double-smash.webp`.
+- Keep credentials, `.env` files, local staging folders, `node_modules`, and build output out of commits. The repository `.gitignore` excludes common local-only files.
+- Cart, favourites, and newsletter interactions currently run in the browser. Orders and newsletter signups are not sent to a backend service.
+
+### Accessibility and Motion
+
+- Use semantic elements and accessible names for new controls.
+- Keep keyboard focus visible and preserve touch-friendly targets.
+- Respect `prefers-reduced-motion`; avoid relying on animation to communicate essential information.
+
+### Contributing
+
+Pull requests are welcome. For larger changes, open an issue first to agree on the approach. Keep changes focused, avoid committing generated build folders or local secrets, and describe how the change was checked. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contributor checklist.
 
 ---
 
@@ -207,4 +232,7 @@ The `CartProvider` provides a single source of truth for the entire application:
 
 - **Brand Identity**: SEBASTIAN by SAMI
 - **Developer**: Muhammad Sami ([@M-Sami-1](https://github.com/M-Sami-1))
-- **Email**: miansamibaba857@gmail.com
+
+## License
+
+The application source code is available under the MIT License; see [LICENSE](LICENSE). Brand marks, product photography, and other supplied media are not covered by that code license. Check their ownership and permissions before reusing them outside this project.

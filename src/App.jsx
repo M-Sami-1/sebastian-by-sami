@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollReveal } from './components/ScrollReveal';
 import { MenuPage } from './pages/MenuPage';
 import { ItemDetailsPage } from './pages/ItemDetailsPage';
 import { CartPage } from './pages/CartPage';
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <ScrollToTop />
+      <ScrollReveal />
       {/* Global Header with live dynamic cart count on every screen */}
       <Header />
 

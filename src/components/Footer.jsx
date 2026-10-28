@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -12,6 +14,27 @@ export function Footer() {
       setSubscribed(true);
       setEmail('');
     }
+  };
+
+  const goToSection = (e, sectionId) => {
+    e.preventDefault();
+    if (location.pathname === '/' || location.pathname === '/menu') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    navigate(`/#${sectionId}`);
+    window.setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  };
+
+  const goToCategory = (e, category) => {
+    e.preventDefault();
+    navigate(`/menu?category=${encodeURIComponent(category)}`);
+    window.setTimeout(() => {
+      document.getElementById('menu-lineup')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
   };
 
   return (
@@ -61,10 +84,10 @@ export function Footer() {
         <div className="footer-grid">
           {/* Brand Col */}
           <div className="footer-col brand-col">
-            <div className="footer-logo">
+            <Link to="/" className="footer-logo" aria-label="SEBASTIAN by SAMI home">
               <span className="logo-main">SEBASTIAN</span>
               <span className="logo-sub">BY SAMI</span>
-            </div>
+            </Link>
             <p className="footer-mission">
               Loud flavor. Real mood. Fresh smashed patties, slow-cooked curries, and house spice blends made to order.
             </p>
@@ -74,11 +97,11 @@ export function Footer() {
           <div className="footer-col">
             <h4 className="footer-col-title">The Menu</h4>
             <ul className="footer-links-list">
-              <li><Link to="/menu">Full Lineup</Link></li>
-              <li><Link to="/menu?category=Fast Food">Smashed Burgers</Link></li>
-              <li><Link to="/menu?category=Main Course">Dum Biryani & Karahi</Link></li>
-              <li><Link to="/menu?category=Snacks">Crispy Tenders & Wings</Link></li>
-              <li><Link to="/menu?category=Drinks">Karak Matka Chai</Link></li>
+              <li><Link to="/menu" onClick={(e) => goToCategory(e, 'All')}>Full Lineup</Link></li>
+              <li><Link to="/menu?category=Fast%20Food" onClick={(e) => goToCategory(e, 'Fast Food')}>Smashed Burgers</Link></li>
+              <li><Link to="/menu?category=Main%20Course" onClick={(e) => goToCategory(e, 'Main Course')}>Dum Biryani & Karahi</Link></li>
+              <li><Link to="/menu?category=Snacks" onClick={(e) => goToCategory(e, 'Snacks')}>Crispy Tenders & Wings</Link></li>
+              <li><Link to="/menu?category=Drinks" onClick={(e) => goToCategory(e, 'Drinks')}>Karak Matka Chai</Link></li>
             </ul>
           </div>
 
@@ -86,10 +109,10 @@ export function Footer() {
           <div className="footer-col">
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
-              <li><Link to="/">Home</Link></li>
-              <li><a href="#menu-lineup">Menu</a></li>
-              <li><a href="#story">Story</a></li>
-              <li><a href="#combos">Combos</a></li>
+              <li><Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link></li>
+              <li><a href="/#menu-lineup" onClick={(e) => goToSection(e, 'menu-lineup')}>Menu</a></li>
+              <li><a href="/#story" onClick={(e) => goToSection(e, 'story')}>Story</a></li>
+              <li><a href="/#combos" onClick={(e) => goToSection(e, 'combos')}>Combos</a></li>
               <li><Link to="/menu?filter=favourites">Saved Favourites</Link></li>
               <li><Link to="/cart">View Cart</Link></li>
             </ul>
@@ -99,10 +122,10 @@ export function Footer() {
           <div className="footer-col">
             <h4 className="footer-col-title">Kitchen Standards</h4>
             <ul className="footer-links-list">
-              <li>100% Fresh Ingredients</li>
-              <li>Never Frozen Beef or Chicken</li>
-              <li>Signature House Sauces</li>
-              <li>Cooked to Order at 230°C</li>
+              <li><a href="/#why-sebastian" onClick={(e) => goToSection(e, 'why-sebastian')}>100% Fresh Ingredients</a></li>
+              <li><a href="/#why-sebastian" onClick={(e) => goToSection(e, 'why-sebastian')}>Never Frozen Beef or Chicken</a></li>
+              <li><a href="/#why-sebastian" onClick={(e) => goToSection(e, 'why-sebastian')}>Signature House Sauces</a></li>
+              <li><a href="/#why-sebastian" onClick={(e) => goToSection(e, 'why-sebastian')}>Cooked to Order at 230°C</a></li>
             </ul>
           </div>
         </div>

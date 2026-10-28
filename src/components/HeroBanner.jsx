@@ -1,101 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Flame, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { CheckeredRibbon } from './CheckeredRibbon';
 
 export function HeroBanner({ onExploreClick }) {
   return (
-    <section className="hero-banner-section" id="top" aria-label="Hero Spotlight">
-
-      {/* ── Two-column hero grid ─────────────────────────────────── */}
-      <div className="hero-content-wrapper">
-
-        {/* LEFT — Text & CTAs (7 of 12 cols on desktop) */}
-        <div className="hero-text-col">
-          <h1 className="hero-headline">
-            BOLD FLAVOR.<br />
-            <span className="hero-headline-accent">REAL MOOD.</span>
+    <section className="hero-banner-section hero-reference-layout" id="top" aria-label="Hero Spotlight">
+      <div className="hero-reference-inner">
+        <img className="hero-reference-background" src="/assets/food/hero-background.jpeg" alt="" aria-hidden="true" />
+        <div className="hero-reference-copy">
+          <h1 className="hero-reference-title">
+            <span>GOOD</span>
+            <span>FOOD.</span>
+            <span className="hero-reference-red">BAD</span>
+            <span>INFLUENCE.</span>
           </h1>
-
-          {/* Primary CTAs — sit directly below headline */}
-          <div className="hero-cta-group">
-            <button
-              type="button"
-              className="btn-hero-primary"
-              onClick={onExploreClick}
-            >
-              <span>Explore Menu</span>
-              <ArrowRight size={18} />
-            </button>
-            <Link to="/cart" className="btn-hero-secondary">
-              <span>View Cart</span>
-            </Link>
-          </div>
-
-          <p className="hero-lead">
-            Smashed beef patties on a 230°C flat top, house-marinated crunch
-            chicken, peri-peri crinkle fries, and slow-simmered dum biryani.
-            Prepared fresh to order.
-          </p>
-
-          {/* Feature perks strip */}
-          <div className="hero-perks-row">
-            <div className="perk-item">
-              <Clock size={16} className="perk-icon" />
-              <span>10-min counter ready</span>
-            </div>
-            <div className="perk-item">
-              <Flame size={16} className="perk-icon" />
-              <span>230°C sizzling griddle</span>
-            </div>
-            <div className="perk-item">
-              <ShieldCheck size={16} className="perk-icon" />
-              <span>100% fresh, never frozen</span>
-            </div>
+          <p className="hero-reference-description">One bite and your plans are cancelled. Big smash burgers, loud crunch, zero chill.</p>
+          <div className="hero-reference-actions">
+            <button type="button" className="hero-reference-primary" onClick={onExploreClick}>GET INTO IT <ArrowRight size={17} /></button>
+            <Link to="/cart" className="hero-reference-secondary">YOUR BAG</Link>
           </div>
         </div>
-
-        {/* RIGHT — Burger visual (5 of 12 cols on desktop) */}
-        <div className="hero-visual-col">
-          <div className="hero-burger-frame">
-            <img
-              src="/assets/food/hero-burger.jpg"
-              alt="Double Trouble Smash Burger on charred wood block — SEBASTIAN by SAMI"
-              className="hero-burger-img"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        </div>
-
       </div>
-      {/* ── End two-column grid ──────────────────────────────────── */}
-
-      {/* Marquee ticker tape */}
-      <div className="ticker-ribbon-container" aria-hidden="true">
-        <div className="ticker-ribbon-track">
-          {[1, 2].map(trackIndex => (
-            <div key={trackIndex} className="ticker-ribbon-content">
-              <span>SMASH BURGERS</span>
-              <span className="ticker-bullet">•</span>
-              <span>CRUNCH CHICKEN</span>
-              <span className="ticker-bullet">•</span>
-              <span>LOUD FRIES</span>
-              <span className="ticker-bullet">•</span>
-              <span>SINDHI BIRYANI</span>
-              <span className="ticker-bullet">•</span>
-              <span>KARAK CHAI</span>
-              <span className="ticker-bullet">•</span>
-              <span>ONLINE ORDERING</span>
-              <span className="ticker-bullet">•</span>
-              <span>SEBASTIAN BY SAMI</span>
-              <span className="ticker-bullet">•</span>
+      <div className="hero-reference-ticker" aria-hidden="true">
+        <div className="hero-marquee-track">
+          {[1, 2].map((copy) => (
+            <div className="hero-marquee-content" key={copy}>
+              <span>SMASH BURGERS</span><b>✳</b><span>CRUNCH CHICKEN</span><b>✳</b>
+              <span>LOUD FRIES</span><b>✳</b><span>KARACHI KITCHEN</span><b>✳</b>
+              <span>GOOD FOOD. BAD INFLUENCE.</span><b>✳</b>
             </div>
           ))}
         </div>
       </div>
-
-      <CheckeredRibbon height={16} />
+      <CheckeredRibbon height={12} />
     </section>
   );
 }

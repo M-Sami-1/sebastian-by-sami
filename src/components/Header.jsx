@@ -65,7 +65,7 @@ export function Header() {
       {/* Top Announcement Bar - Clean, No Emojis */}
       <aside className="top-announcement-bar" aria-label="Kitchen Notice">
         <div className="announcement-content">
-          <span>FRESH GRILL & KITCHEN SPECIALS: Smashed burgers, spicy wings, and dum biryani prepared to order.</span>
+          <span>BREWED FRESH. SERVED BOLD. MADE FOR GOOD TIMES.</span>
         </div>
       </aside>
 
