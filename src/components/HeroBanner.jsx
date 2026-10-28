@@ -6,14 +6,18 @@ import { CheckeredRibbon } from './CheckeredRibbon';
 export function HeroBanner({ onExploreClick }) {
   return (
     <section className="hero-banner-section" id="top" aria-label="Hero Spotlight">
+
+      {/* ── Two-column hero grid ─────────────────────────────────── */}
       <div className="hero-content-wrapper">
+
+        {/* LEFT — Text & CTAs (7 of 12 cols on desktop) */}
         <div className="hero-text-col">
           <h1 className="hero-headline">
             BOLD FLAVOR.<br />
             <span className="hero-headline-accent">REAL MOOD.</span>
           </h1>
 
-          {/* Action buttons directly below headline, matching reference layout */}
+          {/* Primary CTAs — sit directly below headline */}
           <div className="hero-cta-group">
             <button
               type="button"
@@ -29,9 +33,12 @@ export function HeroBanner({ onExploreClick }) {
           </div>
 
           <p className="hero-lead">
-            Smashed beef patties on a 230°C flat top, house-marinated crunch chicken, peri-peri crinkle fries, and slow-simmered dum biryani. Prepared fresh to order.
+            Smashed beef patties on a 230°C flat top, house-marinated crunch
+            chicken, peri-peri crinkle fries, and slow-simmered dum biryani.
+            Prepared fresh to order.
           </p>
 
+          {/* Feature perks strip */}
           <div className="hero-perks-row">
             <div className="perk-item">
               <Clock size={16} className="perk-icon" />
@@ -48,33 +55,23 @@ export function HeroBanner({ onExploreClick }) {
           </div>
         </div>
 
-        {/* Hero Visual Col matching screen reference */}
+        {/* RIGHT — Burger visual (5 of 12 cols on desktop) */}
         <div className="hero-visual-col">
-          <div className="hero-board-platform">
-            <div className="hero-badge-price">
-              <span className="badge-prefix">ONLY</span>
-              <span className="badge-price">Rs. 450</span>
-            </div>
-
-            <div className="hero-image-wrapper">
-              <img
-                src="/assets/food/double-smash-transparent.png"
-                alt="Double Trouble Smash Burger - SEBASTIAN by SAMI"
-                className="hero-featured-img"
-              />
-            </div>
-
-            <div className="hero-stamp-badge">
-              <div className="stamp-inner">
-                <span className="stamp-text">SEBASTIAN</span>
-                <span className="stamp-sub">BY SAMI</span>
-              </div>
-            </div>
+          <div className="hero-burger-frame">
+            <img
+              src="/assets/food/hero-burger.jpg"
+              alt="Double Trouble Smash Burger on charred wood block — SEBASTIAN by SAMI"
+              className="hero-burger-img"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </div>
-      </div>
 
-      {/* Marquee Ticker Tape Ribbon without emojis */}
+      </div>
+      {/* ── End two-column grid ──────────────────────────────────── */}
+
+      {/* Marquee ticker tape */}
       <div className="ticker-ribbon-container" aria-hidden="true">
         <div className="ticker-ribbon-track">
           {[1, 2].map(trackIndex => (
