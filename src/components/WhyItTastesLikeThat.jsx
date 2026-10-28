@@ -10,7 +10,7 @@ export function WhyItTastesLikeThat() {
         <div className="why-header">
           <h2 className="why-title">WHY IT TASTES LIKE THAT</h2>
           <p className="why-subtitle">
-            No secret menu, no mystery. Just a few sacred canteen rules every Sebastian crew follows daily.
+            No secret menu, no mystery. Just a few sacred kitchen standards we follow daily.
           </p>
         </div>
 

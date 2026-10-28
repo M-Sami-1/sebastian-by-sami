@@ -13,7 +13,7 @@ export function MenuList({
     return (
       <EmptyState
         type="search"
-        title="No canteen items match your search"
+        title="No items match your search"
         description={
           searchQuery
             ? `We couldn't find any dish matching "${searchQuery}" in ${activeCategory === 'All' ? 'any category' : activeCategory}.`
@@ -26,7 +26,7 @@ export function MenuList({
   }
 
   return (
-    <section className="menu-list-section" aria-label="Campus Menu Items">
+    <div className="menu-list-section-inner" aria-label="Menu Items">
       <div className="menu-list-header">
         <span className="menu-list-count">
           Showing <strong>{items.length}</strong> {items.length === 1 ? 'item' : 'items'}
@@ -40,6 +40,6 @@ export function MenuList({
           <ItemCard key={item.id} item={item} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }

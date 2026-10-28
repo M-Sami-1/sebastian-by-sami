@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Trash2, ShoppingBag, Check, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Trash2, ShoppingBag, ShieldCheck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { CartItem } from './CartItem';
 import { EmptyState } from './EmptyState';
@@ -20,7 +20,7 @@ export function Cart() {
     totalPrice
   } = useCart();
 
-  const [selectedHub, setSelectedHub] = useState('Student Union Main Hall (Counter 1-3)');
+  const [selectedHub, setSelectedHub] = useState('Main Kitchen Counter');
   const [instructions, setInstructions] = useState('');
   const [completedOrder, setCompletedOrder] = useState(null);
 
@@ -44,9 +44,9 @@ export function Cart() {
       <div className="cart-empty-wrapper">
         <EmptyState
           type="cart"
-          title="Your Canteen Tray is Empty"
-          description="Looks like you haven't picked your cravings yet. Check out today's smashed burgers, hot dum biryani, and loud fries!"
-          actionLabel="Explore Today's Menu"
+          title="Your Cart is Empty"
+          description="You haven't added anything to your order yet. Check out today's freshly smashed burgers, crispy wings, and slow-cooked biryani!"
+          actionLabel="Explore Menu"
           actionLink="/"
         />
       </div>
@@ -62,7 +62,7 @@ export function Cart() {
           <span>Back to Menu</span>
         </Link>
         <div className="cart-page-title-row">
-          <h1 className="cart-heading">YOUR CANTEEN TRAY</h1>
+          <h1 className="cart-heading">YOUR ORDER</h1>
           <span className="cart-badge-count">{totalCount} {totalCount === 1 ? 'item' : 'items'}</span>
         </div>
       </div>
@@ -77,7 +77,7 @@ export function Cart() {
                 type="button"
                 className="cart-clear-btn"
                 onClick={clearCart}
-                aria-label="Clear entire cart"
+                aria-label="Clear entire order"
               >
                 <Trash2 size={14} />
                 <span>Clear All</span>
@@ -98,36 +98,33 @@ export function Cart() {
 
             {/* Pickup Preferences */}
             <div className="cart-pickup-preferences">
-              <label htmlFor="campus-pickup-hub" className="preference-label">
-                Select Campus Pickup Counter:
+              <label htmlFor="order-pickup-location" className="preference-label">
+                Select Pick-Up Location:
               </label>
               <select
-                id="campus-pickup-hub"
+                id="order-pickup-location"
                 className="hub-select-input"
                 value={selectedHub}
                 onChange={(e) => setSelectedHub(e.target.value)}
               >
-                <option value="Student Union Main Hall (Counter 1-3)">
-                  Student Union Main Hall (Counter 1-3)
+                <option value="Main Kitchen Counter (Downtown Central)">
+                  Main Kitchen Counter (Downtown Central)
                 </option>
-                <option value="North Quad Food Plaza (Central Terrace)">
-                  North Quad Food Plaza (Central Terrace)
+                <option value="Express Pick-Up Window (North Station)">
+                  Express Pick-Up Window (North Station)
                 </option>
-                <option value="Science & Tech Complex (Block 4 Atrium)">
-                  Science & Tech Complex (Block 4 Atrium)
-                </option>
-                <option value="Central Library Commons (Night Counter)">
-                  Central Library Commons (Night Counter)
+                <option value="Curbside Station (East Wing)">
+                  Curbside Station (East Wing)
                 </option>
               </select>
 
               <label htmlFor="order-special-instructions" className="preference-label" style={{ marginTop: '1rem' }}>
-                Kitchen Notes (e.g. Extra spicy, no onions, extra napkins):
+                Kitchen Notes:
               </label>
               <input
                 id="order-special-instructions"
                 type="text"
-                placeholder="Optional notes for the canteen crew..."
+                placeholder="Special instructions (e.g. extra crispy fries, no onions)..."
                 className="instructions-input"
                 value={instructions}
                 onChange={(e) => setInstructions(e.target.value)}
@@ -151,12 +148,12 @@ export function Cart() {
               className="btn-checkout"
               onClick={handleCheckout}
             >
-              <span>Place Campus Order ({formatCurrency(totalPrice)})</span>
+              <span>Place Order ({formatCurrency(totalPrice)})</span>
             </button>
 
             <div className="checkout-guarantee">
               <ShieldCheck size={16} className="guarantee-icon" />
-              <span>Counter pickup ready in ~10 mins · Student card or cash at pickup</span>
+              <span>Hot & ready for pickup in ~10-12 mins · Card or cash at counter</span>
             </div>
           </div>
         </div>

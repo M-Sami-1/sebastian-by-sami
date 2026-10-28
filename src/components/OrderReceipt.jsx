@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatCurrency } from '../utils/formatters';
 
-export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLocation = 'Student Union Hall' }) {
+export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLocation = 'Main Counter' }) {
   const orderNumber = 'SEB-' + Math.floor(1000 + Math.random() * 9000);
   const now = new Date();
   const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -12,13 +12,13 @@ export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLo
         {/* Receipt Header */}
         <div className="receipt-header">
           <div className="receipt-brand">SEBASTIAN</div>
-          <div className="receipt-subbrand">CAMPUS CANTEEN · BY SAMI</div>
+          <div className="receipt-subbrand">BY SAMI · ORDER RECEIPT</div>
           <div className="receipt-meta-row">
-            <span>Order #{orderNumber}</span>
+            <span>Ticket #{orderNumber}</span>
             <span>{timeString}</span>
           </div>
           <div className="receipt-pickup-hub">
-            Pickup: <strong>{pickupLocation}</strong>
+            Pick-up: <strong>{pickupLocation}</strong>
           </div>
         </div>
 
@@ -44,12 +44,12 @@ export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLo
             <span>{formatCurrency(subtotal)}</span>
           </div>
           <div className="receipt-row">
-            <span>Campus Pickup Service</span>
-            <span className="free-tag">FREE (Subsidized)</span>
+            <span>Counter Pick-Up</span>
+            <span className="free-tag">FREE</span>
           </div>
           <div className="receipt-row">
-            <span>Student Discount</span>
-            <span className="discount-tag">Rs. 0 (Standard Student Rate)</span>
+            <span>Service & Taxes</span>
+            <span className="discount-tag">Rs. 0 (Included)</span>
           </div>
           <div className="receipt-row total-row">
             <span>TOTAL</span>
@@ -65,7 +65,7 @@ export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLo
             ||| | |||| | ||||| || |||||| | ||| || |||| |||
           </div>
           <p className="receipt-slogan">
-            KEEP GOING... HOT & FRESH IN 10 MINS
+            FRESH ON THE 230°C GRIDDLE · READY IN ~10 MINS
           </p>
         </div>
       </div>

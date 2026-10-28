@@ -34,7 +34,7 @@ export function useMenu() {
       setMenu(data);
     } catch (err) {
       console.error('Error fetching menu.json:', err);
-      setError(err.message || 'Could not load today\'s canteen menu. Please try again.');
+      setError(err.message || 'Could not load today\'s menu. Please try again.');
     } finally {
       setLoading(false);
     }

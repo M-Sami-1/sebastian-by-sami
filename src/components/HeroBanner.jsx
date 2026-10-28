@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Clock, Flame } from 'lucide-react';
+import { ArrowRight, Clock, Flame, ShieldCheck } from 'lucide-react';
 import { CheckeredRibbon } from './CheckeredRibbon';
 
 export function HeroBanner({ onExploreClick }) {
@@ -10,7 +10,7 @@ export function HeroBanner({ onExploreClick }) {
         <div className="hero-text-col">
           <div className="hero-status-pill">
             <span className="live-dot" aria-hidden="true"></span>
-            <span>Open till 11:30 PM across 4 campus hubs</span>
+            <span>Kitchen Open · Quick Pick-Up</span>
           </div>
 
           <h1 className="hero-headline">
@@ -19,7 +19,7 @@ export function HeroBanner({ onExploreClick }) {
           </h1>
 
           <p className="hero-lead">
-            No tired cafeteria food. Fresh smashed beef patties, 24-hour spiced biryani, crunchy buttermilk tenders, and hot karak chai made to power your study sessions.
+            Smashed beef patties on a 230°C flat top, house-marinated crunch chicken, peri-peri crinkle fries, and slow-simmered dum biryani. Prepared fresh to order.
           </p>
 
           <div className="hero-cta-group">
@@ -28,7 +28,7 @@ export function HeroBanner({ onExploreClick }) {
               className="btn-hero-primary"
               onClick={onExploreClick}
             >
-              <span>Order Now</span>
+              <span>Explore Menu</span>
               <ArrowRight size={18} />
             </button>
             <Link to="/cart" className="btn-hero-secondary">
@@ -39,20 +39,20 @@ export function HeroBanner({ onExploreClick }) {
           <div className="hero-perks-row">
             <div className="perk-item">
               <Clock size={16} className="perk-icon" />
-              <span>10-min counter pickup</span>
+              <span>10-min counter ready</span>
             </div>
             <div className="perk-item">
               <Flame size={16} className="perk-icon" />
-              <span>Smashed at 230°C</span>
+              <span>230°C sizzling griddle</span>
             </div>
             <div className="perk-item">
-              <Sparkles size={16} className="perk-icon" />
-              <span>Student budget friendly</span>
+              <ShieldCheck size={16} className="perk-icon" />
+              <span>100% fresh, never frozen</span>
             </div>
           </div>
         </div>
 
-        {/* Hero Visual Col */}
+        {/* Hero Visual Col with REAL high-res food photo */}
         <div className="hero-visual-col">
           <div className="hero-badge-price">
             <span className="badge-prefix">Only</span>
@@ -61,8 +61,8 @@ export function HeroBanner({ onExploreClick }) {
 
           <div className="hero-image-wrapper">
             <img
-              src="/assets/food/smash-burger.svg"
-              alt="Double Trouble Smash Burger - Sebastian Special"
+              src="/assets/food/double-smash.webp"
+              alt="Double Trouble Smash Burger - SEBASTIAN by SAMI"
               className="hero-featured-img"
             />
           </div>
@@ -76,25 +76,25 @@ export function HeroBanner({ onExploreClick }) {
         </div>
       </div>
 
-      {/* Marquee Ticker Tape Ribbon */}
+      {/* Marquee Ticker Tape Ribbon without emojis */}
       <div className="ticker-ribbon-container" aria-hidden="true">
         <div className="ticker-ribbon-track">
           {[1, 2].map(trackIndex => (
             <div key={trackIndex} className="ticker-ribbon-content">
               <span>SMASH BURGERS</span>
-              <span className="ticker-bullet">✦</span>
+              <span className="ticker-bullet">•</span>
               <span>CRUNCH CHICKEN</span>
-              <span className="ticker-bullet">✦</span>
+              <span className="ticker-bullet">•</span>
               <span>LOUD FRIES</span>
-              <span className="ticker-bullet">✦</span>
+              <span className="ticker-bullet">•</span>
               <span>SINDHI BIRYANI</span>
-              <span className="ticker-bullet">✦</span>
+              <span className="ticker-bullet">•</span>
               <span>KARAK CHAI</span>
-              <span className="ticker-bullet">✦</span>
-              <span>DELIVERY OR PICKUP</span>
-              <span className="ticker-bullet">✦</span>
-              <span>BY SAMI</span>
-              <span className="ticker-bullet">✦</span>
+              <span className="ticker-bullet">•</span>
+              <span>ONLINE ORDERING</span>
+              <span className="ticker-bullet">•</span>
+              <span>SEBASTIAN BY SAMI</span>
+              <span className="ticker-bullet">•</span>
             </div>
           ))}
         </div>

@@ -7,9 +7,9 @@ export function ErrorState({ error, onRetry }) {
       <div className="error-icon-wrapper">
         <AlertTriangle size={36} className="error-icon" />
       </div>
-      <h3 className="error-title">Failed to load canteen menu</h3>
+      <h3 className="error-title">Failed to load menu</h3>
       <p className="error-message">
-        {error || 'Unable to communicate with the canteen server to retrieve today\'s menu.'}
+        {error || 'Unable to retrieve today\'s menu. Please check your connection and try again.'}
       </p>
       {onRetry && (
         <button type="button" className="btn-brand" onClick={onRetry}>

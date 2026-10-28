@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flame, Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Footer() {
@@ -16,13 +16,13 @@ export function Footer() {
 
   return (
     <footer className="site-footer">
-      {/* Drop Alert Newsletter section from inspo */}
-      <section className="footer-drop-section" aria-label="Drop Alerts">
+      {/* Drop Alert Newsletter section */}
+      <section className="footer-drop-section" aria-label="Menu Updates & Drops">
         <div className="footer-drop-container">
           <div className="drop-text-col">
             <h3 className="drop-heading">GET DROPS BEFORE EVERYONE ELSE</h3>
             <p className="drop-subheading">
-              One email on Fridays with new menu drops, secret student combos, and discount scratch codes.
+              Exclusive weekly updates on seasonal menu items, weekend specials, and house drops.
             </p>
           </div>
 
@@ -30,24 +30,24 @@ export function Footer() {
             {subscribed ? (
               <div className="drop-success-box" role="status">
                 <Check size={20} className="success-icon" />
-                <span>You're in the inner circle! Watch your inbox this Friday.</span>
+                <span>You're subscribed! Watch your inbox for upcoming drops.</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="drop-form">
-                <label htmlFor="student-email-input" className="sr-only">
-                  Student Email
+                <label htmlFor="customer-email-input" className="sr-only">
+                  Email Address
                 </label>
                 <input
-                  id="student-email-input"
+                  id="customer-email-input"
                   type="email"
-                  placeholder="student@university.edu"
+                  placeholder="Enter your email address"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="drop-input"
                 />
                 <button type="submit" className="drop-submit-btn">
-                  <span>Sign me up</span>
+                  <span>Sign Up</span>
                   <ArrowRight size={16} />
                 </button>
               </form>
@@ -66,18 +66,18 @@ export function Footer() {
               <span className="logo-sub">BY SAMI</span>
             </div>
             <p className="footer-mission">
-              Loud flavor. Real mood. Crafted fresh daily on the 230°C hot griddle for students, faculty, and campus night owls.
+              Loud flavor. Real mood. Fresh smashed patties, slow-cooked curries, and house spice blends made to order.
             </p>
             <div className="footer-hours-pill">
-              <span className="hours-dot"></span> Open Daily: 8:00 AM – 11:30 PM
+              <span className="hours-dot"></span> Kitchen Open Daily: 11:00 AM – 11:30 PM
             </div>
           </div>
 
-          {/* Eat Col */}
+          {/* Menu Col */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Eat</h4>
+            <h4 className="footer-col-title">The Menu</h4>
             <ul className="footer-links-list">
-              <li><Link to="/menu">Today's Menu</Link></li>
+              <li><Link to="/menu">Full Lineup</Link></li>
               <li><Link to="/menu?category=Fast Food">Smashed Burgers</Link></li>
               <li><Link to="/menu?category=Main Course">Dum Biryani & Karahi</Link></li>
               <li><Link to="/menu?category=Snacks">Crispy Tenders & Wings</Link></li>
@@ -85,36 +85,36 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Campus Col */}
-          <div className="footer-col" id="campus-hubs">
-            <h4 className="footer-col-title">Campus Hubs</h4>
+          {/* Quick Links Col */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
-              <li>Student Union Main Hall (Counter 1-3)</li>
-              <li>North Quad Food Court</li>
-              <li>Science & Tech Complex Kiosk</li>
-              <li>Central Library Late Night Corner</li>
+              <li><Link to="/">Home</Link></li>
+              <li><a href="#about">About SEBASTIAN</a></li>
+              <li><Link to="/menu?filter=favourites">Saved Favourites</Link></li>
+              <li><Link to="/cart">View Cart</Link></li>
             </ul>
           </div>
 
-          {/* Info Col */}
+          {/* Standards Col */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Canteen Care</h4>
+            <h4 className="footer-col-title">Kitchen Standards</h4>
             <ul className="footer-links-list">
-              <li>100% Halal Certified</li>
-              <li>No Frozen Patties Policy</li>
-              <li>Student Meal Pass Accepted</li>
-              <li>Allergen Advisory</li>
+              <li>100% Fresh Ingredients</li>
+              <li>Never Frozen Beef or Chicken</li>
+              <li>Signature House Sauces</li>
+              <li>Cooked to Order at 230°C</li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Giant Brand Wordmark & Copyright */}
+        {/* Bottom Giant Brand Wordmark & Copyright - Fully Responsive, NEVER clips */}
         <div className="footer-bottom-bar">
-          <div className="giant-footer-wordmark" aria-hidden="true">
-            SEBASTIAN
+          <div className="giant-footer-wordmark-container">
+            <span className="giant-footer-wordmark">SEBASTIAN</span>
           </div>
           <div className="footer-legal-row">
-            <p>© {new Date().getFullYear()} SEBASTIAN Campus Canteen by SAMI. University Assignment Project.</p>
+            <p>© {new Date().getFullYear()} SEBASTIAN by SAMI. All rights reserved.</p>
             <p>Designed with passion & bold flavor.</p>
           </div>
         </div>

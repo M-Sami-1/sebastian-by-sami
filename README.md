@@ -1,20 +1,20 @@
-# SEBASTIAN · Campus Canteen by SAMI
+# SEBASTIAN by SAMI
 
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![React Router](https://img.shields.io/badge/React_Router-7.3-CA4245?logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A high-performance, responsive React web application built for university campus dining. Designed with a punchy, bold visual personality inspired by modern street food and campus culture, **SEBASTIAN by SAMI** provides students and faculty with seamless daily menu exploration, mood-based filtering, item customization, instant cart calculations, and counter pickup ordering.
+A high-performance, responsive React web application for **SEBASTIAN by SAMI**. Designed with a punchy, bold visual personality inspired by modern street food and independent kitchen culture, the platform provides diners with seamless menu exploration, mood-based filtering, item customization, instant cart calculations, and online pickup ordering.
 
 ---
 
 ## 🌟 Key Features
 
 1. **Dynamic Local JSON Menu Loading**
-   - Canteen menu items are fetched dynamically from `/menu.json` using `useEffect`, `fetch`, and `async/await`.
+   - Menu items are fetched dynamically from `/menu.json` using `useEffect`, `fetch`, and `async/await`.
    - Comprehensive error handling with user-friendly retry mechanism (`ErrorState`) and animated skeleton screens (`LoadingState`).
-   - 18+ realistic university canteen items spanning **Fast Food**, **Main Course**, **Breakfast**, **Snacks**, **Drinks**, and **Desserts**.
+   - 18 realistic, high-quality menu items spanning **Fast Food**, **Main Course**, **Breakfast**, **Snacks**, **Drinks**, and **Desserts** with real photography assets.
 
 2. **Real-time Search & Multi-layer Filtering**
    - Search menu items instantly by dish title or description.
@@ -32,43 +32,40 @@ A high-performance, responsive React web application built for university campus
    - Adding an existing item automatically increments its quantity instead of duplicating entries.
    - Live cart badge count in the header updates instantly without page reload.
    - Automatic live calculation of item subtotals and overall order total.
-   - LocalStorage synchronization prevents accidental tray loss on browser refresh.
+   - LocalStorage synchronization prevents accidental order loss on browser refresh.
 
 5. **Dynamic Item Details Route (`/item/:id`)**
    - Dedicated dish view showing preparation time, calorie counts, allergen notices, napkins needed, and heat/spice meters.
    - Interactive quantity control with live price calculation.
    - Graceful fallback for invalid item IDs with an intuitive "Return to Menu" link.
 
-6. **Campus Canteen Checkout Simulation**
+6. **Order Receipt & Responsive Checkout Modal**
    - Authentic retro paper receipt breakdown (`OrderReceipt`) inspired by street-food tickets.
-   - Campus pickup hub selector (Student Union, North Quad, Science Block, Central Library).
-   - Kitchen notes input for special student requests (e.g., extra spicy, no onions).
-   - Order confirmation modal with pickup token code and estimated prep time.
+   - Pick-up station selector and kitchen notes input.
+   - Viewport-safe, mobile-first order confirmation modal (`OrderSuccessModal`) with pickup token code and estimated prep time.
 
-7. **Bespoke Responsive Design & Aesthetics**
+7. **Bespoke Responsive Design & Real Assets**
    - Electric red, deep charcoal, and warm vintage cream palette based on `Design_inspo`.
    - Iconic checkered flag ribbons and marquee ticker tapes.
    - Fully optimized for mobile phones (touch friendly, collapsible drawer), tablets, and high-res desktops.
-   - Safe vector image fallbacks so missing image paths never break layouts.
+   - Real food photography and brand logo/favicon assets with fallback support.
 
 ---
 
 ## 🏗️ Architecture & Folder Structure
 
-The application follows a clean, component-based React architecture designed for maintainability and scalability:
-
 ```text
 Assignment-ACP/
 ├── public/
 │   ├── assets/
-│   │   └── food/             # Vector food illustrations & SVG assets
-│   ├── menu.json             # Dynamic canteen menu data source
-│   └── favicon.svg           # Branded S icon
-├── scripts/
-│   └── generate-food-assets.js # Asset illustration generator
+│   │   ├── branding/         # Brand logo assets
+│   │   └── food/             # Real food photography & assets
+│   ├── menu.json             # Dynamic menu data source
+│   └── favicon.jpeg          # Official brand favicon
 ├── src/
-│   ├── assets/               # Static assets & icons
+│   ├── assets/               # Static assets
 │   ├── components/           # Reusable presentational & container components
+│   │   ├── AboutSection.jsx  # Brand philosophy & kitchen standards
 │   │   ├── Cart.jsx          # Dedicated cart container
 │   │   ├── CartItem.jsx      # Line item with quantity stepper & remove
 │   │   ├── CategoryFilter.jsx# Category pills with item count badges
@@ -76,7 +73,7 @@ Assignment-ACP/
 │   │   ├── EmptyState.jsx    # Reusable contextual empty state
 │   │   ├── ErrorState.jsx    # Graceful error state with retry button
 │   │   ├── FavouriteButton.jsx # Accessible heart bookmark button
-│   │   ├── Footer.jsx        # Campus hubs, student newsletter & branding
+│   │   ├── Footer.jsx        # Footer links, newsletter & non-clipping brand
 │   │   ├── Header.jsx        # Sticky navigation with live cart count
 │   │   ├── HeroBanner.jsx    # Hero visual & marquee ticker ribbon
 │   │   ├── ItemCard.jsx      # Food card with fallback, tags, price & add
@@ -84,13 +81,12 @@ Assignment-ACP/
 │   │   ├── LoadingState.jsx  # Animated skeleton loader
 │   │   ├── MenuList.jsx      # Responsive grid container for items
 │   │   ├── MoodFilter.jsx    # "WHAT'S THE MOOD?" mood filter buttons
-│   │   ├── MoodShowcase.jsx  # Featured dish card with heat & napkin meters
+│   │   ├── MoodShowcase.jsx  # Featured dish card with flame heat meters
 │   │   ├── OrderReceipt.jsx  # Vintage paper receipt summary
-│   │   ├── OrderSuccessModal.jsx # Order confirmation token modal
+│   │   ├── OrderSuccessModal.jsx # Viewport-contained order confirmation
 │   │   ├── QuantityControl.jsx # Accessible [-] count [+] stepper
 │   │   ├── ScrollToTop.jsx   # Smooth page scroll reset on route changes
 │   │   ├── SearchBar.jsx     # Search input with clear button
-│   │   ├── CampusLocations.jsx # Live campus hub timings & status
 │   │   └── WhyItTastesLikeThat.jsx # 230°C griddle quality standards
 │   ├── context/
 │   │   ├── CartContext.jsx   # Global cart state & calculations
@@ -100,14 +96,14 @@ Assignment-ACP/
 │   ├── pages/
 │   │   ├── MenuPage.jsx      # Main landing & menu exploration screen
 │   │   ├── ItemDetailsPage.jsx # Dynamic route page (/item/:id)
-│   │   ├── CartPage.jsx      # Dedicated checkout tray page (/cart)
+│   │   ├── CartPage.jsx      # Dedicated checkout page (/cart)
 │   │   └── NotFoundPage.jsx  # 404 error page
 │   ├── utils/
 │   │   └── formatters.js     # Currency (Rs.) & string utilities
 │   ├── App.jsx               # Application router & layout shell
 │   ├── main.jsx              # React DOM root & context providers
 │   └── index.css             # Unified CSS design system & media queries
-├── index.html                # HTML entry point with Google Fonts
+├── index.html                # HTML entry point with Google Fonts & favicon
 ├── package.json              # Project dependencies & scripts
 ├── vite.config.js            # Vite configuration
 └── README.md                 # Project documentation
@@ -120,9 +116,9 @@ Assignment-ACP/
 - **React 19** – Functional components, modern hooks (`useState`, `useEffect`, `useContext`, `useMemo`, `useCallback`, `useRef`).
 - **React Router 7** – Client-side routing with dynamic parameters (`/item/:id`) and query string synchronization.
 - **Context API** – Global, decentralized state for Cart and Favourites without external heavyweight libraries.
-- **Lucide React** – Clean, semantic SVG iconography.
+- **Lucide React** – Clean, semantic SVG iconography (no emojis used).
 - **Vite 6** – Next-generation frontend build tooling with instant HMR and optimized production bundles.
-- **Native CSS3** – Custom properties (variables), Flexbox, CSS Grid, media queries, and keyframe animations.
+- **Native CSS3** – Custom properties (variables), Flexbox, CSS Grid, media queries, `clamp()`, and keyframe animations.
 
 ---
 
@@ -180,8 +176,8 @@ The `CartProvider` provides a single source of truth for the entire application:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/sebastian-campus-canteen.git
-   cd sebastian-campus-canteen
+   git clone https://github.com/M-Sami-1/sebastian-by-sami.git
+   cd sebastian-by-sami
    ```
 
 2. Install dependencies:
@@ -193,7 +189,7 @@ The `CartProvider` provides a single source of truth for the entire application:
    ```bash
    npm run dev
    ```
-   Open your browser at `http://localhost:3000` (or the port indicated in your terminal).
+   Open your browser at `http://localhost:3000`.
 
 4. Build for production:
    ```bash
@@ -207,28 +203,8 @@ The `CartProvider` provides a single source of truth for the entire application:
 
 ---
 
-## 📱 Screenshots & Visual Previews
-
-| Desktop Menu & Mood Lineup | Mobile Responsive View | Retro Receipt Cart |
-| :---: | :---: | :---: |
-| *(Hero banner, mood selector, and food cards)* | *(Touch-friendly drawer, adaptive single column)* | *(Thermal paper receipt & order summary)* |
-
-*(Screenshots can be added here once published to GitHub)*
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Online student meal card balance integration via NFC / RFID barcode.
-- [ ] Push notifications / SMS alert when the order pickup token is called at Counter 1.
-- [ ] Interactive 3D burger builder ("Build Your Stack" custom topping selector).
-- [ ] Dark / Light mode toggle while preserving signature canteen red.
-
----
-
 ## 👨‍🍳 Author & Credits
 
-- **Identity**: SEBASTIAN Campus Canteen
+- **Brand Identity**: SEBASTIAN by SAMI
 - **Developer**: Muhammad Sami ([@M-Sami-1](https://github.com/M-Sami-1))
 - **Email**: miansamibaba857@gmail.com
-- **Course**: Advanced Client-side Programming (ACP) University Assignment

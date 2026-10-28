@@ -7,7 +7,7 @@ import { MenuList } from '../components/MenuList';
 import { HeroBanner } from '../components/HeroBanner';
 import { MoodShowcase } from '../components/MoodShowcase';
 import { WhyItTastesLikeThat } from '../components/WhyItTastesLikeThat';
-import { CampusLocations } from '../components/CampusLocations';
+import { AboutSection } from '../components/AboutSection';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import { useFavourites } from '../context/FavouritesContext';
@@ -30,12 +30,15 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
 
   const menuSectionRef = useRef(null);
 
-  // Sync with URL query params if changed externally
+  // Sync with URL query params if changed externally (e.g. from nav clicks)
   useEffect(() => {
     const filterParam = searchParams.get('filter');
     if (filterParam === 'favourites') {
       setOnlyFavourites(true);
+    } else if (filterParam === null && onlyFavourites) {
+      setOnlyFavourites(false);
     }
+
     const catParam = searchParams.get('category');
     if (catParam) {
       setSelectedCategory(catParam);
@@ -99,8 +102,11 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
   };
 
   const scrollToMenu = () => {
-    if (menuSectionRef.current) {
-      menuSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('menu-lineup');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (menuSectionRef.current) {
+      menuSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -122,7 +128,7 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
       {/* Hero Visual Section */}
       <HeroBanner onExploreClick={scrollToMenu} />
 
-      {/* Mood Filter & Showcase Section from inspo */}
+      {/* Mood Filter & Showcase Section */}
       <section className="mood-experience-section" aria-label="Mood Selector">
         <div className="section-container">
           <MoodFilter
@@ -143,7 +149,7 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
           <div className="lineup-header">
             <h2 className="lineup-title">THE LINEUP</h2>
             <p className="lineup-subtitle">
-              Smashed, fried, slow-cooked, and spiced to perfection. Browse today's full canteen offering.
+              Smashed, fried, slow-cooked, and spiced to order. Browse our full kitchen menu.
             </p>
           </div>
 
@@ -207,11 +213,11 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
         </div>
       </section>
 
-      {/* Quality Standards Section from inspo */}
+      {/* Quality Standards Section */}
       <WhyItTastesLikeThat />
 
-      {/* Campus Hubs & Locations from inspo */}
-      <CampusLocations />
+      {/* Proper About Section for SEBASTIAN by SAMI */}
+      <AboutSection />
     </div>
   );
 }

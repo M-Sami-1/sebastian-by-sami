@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flame, Check, Plus, Heart } from 'lucide-react';
+import { Flame, Check, Plus, Heart, Utensils } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useFavourites } from '../context/FavouritesContext';
 import { Link } from 'react-router-dom';
@@ -20,8 +20,11 @@ export function MoodShowcase({ featuredItem }) {
     setTimeout(() => setJustAdded(false), 1200);
   };
 
+  const heatLevel = featuredItem.spiceLevel || 2;
+  const napkinsNeeded = featuredItem.napkins || 3;
+
   return (
-    <section className="mood-showcase-section" aria-label="Featured Mood Pick">
+    <section className="mood-showcase-section" aria-label="Featured Pick">
       <div className="mood-showcase-card">
         {/* Visual Dish Column */}
         <div className="showcase-visual-col">
@@ -39,10 +42,10 @@ export function MoodShowcase({ featuredItem }) {
           </Link>
         </div>
 
-        {/* Dish Stats Card Column (Black card matching inspo) */}
+        {/* Dish Stats Card Column */}
         <div className="showcase-details-col">
           <div className="showcase-header-row">
-            <span className="showcase-badge">{featuredItem.badge || 'Chef Recommendation'}</span>
+            <span className="showcase-badge">{featuredItem.badge || 'House Favorite'}</span>
             <button
               type="button"
               className={`showcase-fav-btn ${isFav ? 'active' : ''}`}
@@ -59,18 +62,17 @@ export function MoodShowcase({ featuredItem }) {
 
           <p className="showcase-description">{featuredItem.description}</p>
 
-          {/* Meters: Heat, Crunch, Napkins */}
+          {/* Professional Meters: Heat, Crunch, Napkins - NO EMOJIS */}
           <div className="showcase-meters-table">
             <div className="meter-row">
-              <span className="meter-label">Heat</span>
-              <div className="meter-icons heat-meter" aria-label={`Heat level ${featuredItem.spiceLevel || 2} of 5`}>
+              <span className="meter-label">Heat Level</span>
+              <div className="meter-flames" aria-label={`Heat level ${heatLevel} of 5`}>
                 {[1, 2, 3, 4, 5].map(step => (
-                  <span
+                  <Flame
                     key={step}
-                    className={`meter-dot ${(featuredItem.spiceLevel || 2) >= step ? 'dot-active' : ''}`}
-                  >
-                    🌶️
-                  </span>
+                    size={18}
+                    className={`meter-flame-icon ${heatLevel >= step ? 'flame-active' : 'flame-inactive'}`}
+                  />
                 ))}
               </div>
             </div>
@@ -88,11 +90,9 @@ export function MoodShowcase({ featuredItem }) {
             </div>
 
             <div className="meter-row">
-              <span className="meter-label">Napkins needed</span>
-              <div className="meter-napkins" aria-label={`${featuredItem.napkins || 3} napkins needed`}>
-                {[...Array(featuredItem.napkins || 3)].map((_, i) => (
-                  <span key={i} className="napkin-icon">🧻</span>
-                ))}
+              <span className="meter-label">Napkins Needed</span>
+              <div className="meter-napkin-tags" aria-label={`${napkinsNeeded} napkins recommended`}>
+                <span className="napkin-count-badge">{napkinsNeeded} Napkins</span>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ export function MoodShowcase({ featuredItem }) {
               ) : (
                 <>
                   <Plus size={18} strokeWidth={2.8} />
-                  <span>Add to Bag {currentQty > 0 ? `(${currentQty})` : ''}</span>
+                  <span>Add to Order {currentQty > 0 ? `(${currentQty})` : ''}</span>
                 </>
               )}
             </button>

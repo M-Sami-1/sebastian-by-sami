@@ -8,8 +8,8 @@ export function NotFoundPage() {
         <EmptyState
           type="default"
           title="404 - Page Not Found"
-          description="The canteen route you are looking for does not exist or has moved. Return to the main menu to grab some food."
-          actionLabel="Go to Today's Menu"
+          description="The page you are looking for does not exist or has moved. Return to the main menu to explore our dishes."
+          actionLabel="Go to Menu"
           actionLink="/"
         />
       </div>

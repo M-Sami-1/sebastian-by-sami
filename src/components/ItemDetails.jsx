@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Check, Plus, Clock, Flame, ShieldAlert, Star, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Check, Clock, Flame, ShieldAlert, Star, ShoppingBag, Layers } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { QuantityControl } from './QuantityControl';
 import { FavouriteButton } from './FavouriteButton';
@@ -23,8 +23,8 @@ export function ItemDetails({ menu = [], loading = false }) {
         <EmptyState
           type="default"
           title="Dish Not Found"
-          description={`We couldn't find a menu item with ID #${id}. It may have been sold out or the link is invalid.`}
-          actionLabel="Return to Today's Menu"
+          description={`We couldn't find a menu item with ID #${id}. It may currently be unavailable or the link is invalid.`}
+          actionLabel="Return to Menu"
           actionLink="/"
         />
       </div>
@@ -49,13 +49,16 @@ export function ItemDetails({ menu = [], loading = false }) {
     setTimeout(() => setJustAdded(false), 1200);
   };
 
+  const spiceLevel = item.spiceLevel || 0;
+  const napkins = item.napkins || 2;
+
   return (
     <div className="item-details-page-content">
       {/* Return to menu link */}
       <nav className="item-details-nav" aria-label="Breadcrumb">
         <Link to="/" className="back-link">
           <ArrowLeft size={18} />
-          <span>Back to Today's Menu</span>
+          <span>Back to Menu</span>
         </Link>
         <span className="details-crumb-separator">/</span>
         <span className="details-crumb-active">{item.name}</span>
@@ -115,7 +118,7 @@ export function ItemDetails({ menu = [], loading = false }) {
 
           <p className="details-description">{item.description}</p>
 
-          {/* Quick specs grid */}
+          {/* Quick specs grid - NO EMOJIS */}
           <div className="details-specs-grid">
             <div className="spec-card">
               <span className="spec-label">Preparation Time</span>
@@ -135,14 +138,13 @@ export function ItemDetails({ menu = [], loading = false }) {
 
             <div className="spec-card">
               <span className="spec-label">Heat & Spice</span>
-              <div className="spec-value-row" aria-label={`Spice level ${item.spiceLevel || 0} of 4`}>
-                {[...Array(4)].map((_, i) => (
-                  <span
-                    key={i}
-                    className={`spice-dot ${i < (item.spiceLevel || 0) ? 'is-hot' : 'is-mild'}`}
-                  >
-                    🌶️
-                  </span>
+              <div className="spec-value-row spec-flame-meter" aria-label={`Spice level ${spiceLevel} of 4`}>
+                {[1, 2, 3, 4].map(step => (
+                  <Flame
+                    key={step}
+                    size={16}
+                    className={`spice-flame-icon ${spiceLevel >= step ? 'flame-active' : 'flame-inactive'}`}
+                  />
                 ))}
               </div>
             </div>
@@ -150,9 +152,8 @@ export function ItemDetails({ menu = [], loading = false }) {
             <div className="spec-card">
               <span className="spec-label">Napkins Needed</span>
               <div className="spec-value-row">
-                {[...Array(item.napkins || 2)].map((_, i) => (
-                  <span key={i} className="napkin-ico">🧻</span>
-                ))}
+                <Layers size={16} className="spec-icon" />
+                <span className="spec-value">{napkins} Napkins Recommended</span>
               </div>
             </div>
           </div>
@@ -192,18 +193,18 @@ export function ItemDetails({ menu = [], loading = false }) {
                 {justAdded ? (
                   <>
                     <Check size={20} strokeWidth={3} />
-                    <span>Added {quantity} to Cart!</span>
+                    <span>Added {quantity} to Order!</span>
                   </>
                 ) : (
                   <>
                     <ShoppingBag size={20} />
-                    <span>Add {quantity} to Cart · {formatCurrency(liveSubtotal)}</span>
+                    <span>Add {quantity} to Order · {formatCurrency(liveSubtotal)}</span>
                   </>
                 )}
               </button>
 
               <Link to="/cart" className="btn-view-cart-link">
-                View Cart {inCartQty > 0 ? `(${inCartQty} in tray)` : ''}
+                View Cart {inCartQty > 0 ? `(${inCartQty})` : ''}
               </Link>
             </div>
           </div>
@@ -212,7 +213,7 @@ export function ItemDetails({ menu = [], loading = false }) {
 
       {/* Recommended Items Section */}
       <section className="related-items-section" aria-label="You might also like">
-        <h3 className="related-title">MORE CAMPUS CRAVINGS</h3>
+        <h3 className="related-title">MORE SIGNATURE CRAVINGS</h3>
         <div className="related-grid">
           {menu
             .filter(m => m.id !== item.id && (m.category === item.category || m.mood === item.mood))

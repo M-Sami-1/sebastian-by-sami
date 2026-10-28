@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { ShoppingBag, Heart, Menu, X, Flame, Sparkles } from 'lucide-react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { ShoppingBag, Heart, Menu, X, Flame } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useFavourites } from '../context/FavouritesContext';
 
@@ -8,6 +8,8 @@ export function Header() {
   const { totalCount } = useCart();
   const { favouritesCount } = useFavourites();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prev => !prev);
@@ -17,14 +19,45 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  // Controlled navigation to ensure the target section is never hidden by sticky header
+  const handleSectionClick = (e, sectionId) => {
+    e.preventDefault();
+    closeMobileMenu();
+
+    if (location.pathname !== '/') {
+      navigate('/' + (sectionId ? `#${sectionId}` : ''));
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  const handleAllItemsClick = (e) => {
+    e.preventDefault();
+    closeMobileMenu();
+    navigate('/menu?category=All');
+    setTimeout(() => {
+      const el = document.getElementById('menu-lineup');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   return (
     <header className="site-header">
-      {/* Top Campus Announcement Bar */}
-      <aside className="top-announcement-bar" aria-label="Campus Notice">
+      {/* Top Announcement Bar - Clean, No Emojis */}
+      <aside className="top-announcement-bar" aria-label="Kitchen Notice">
         <div className="announcement-content">
-          <span className="announcement-star">★</span>
-          <span>CAMPUS SPECIAL: Fresh Double Smash & Hot Dum Biryani drops at 12:00 PM. Order online, pickup at Student Union!</span>
-          <span className="announcement-star">★</span>
+          <span>FRESH GRILL & KITCHEN SPECIALS: Smashed burgers, spicy wings, and dum biryani prepared to order.</span>
         </div>
       </aside>
 
@@ -38,7 +71,7 @@ export function Header() {
             </div>
             <div className="brand-text-block">
               <span className="brand-name">SEBASTIAN</span>
-              <span className="brand-subtitle">CAMPUS CANTEEN · BY SAMI</span>
+              <span className="brand-subtitle">BY SAMI</span>
             </div>
           </Link>
 
@@ -49,19 +82,28 @@ export function Header() {
               end
               className={({ isActive }) => `nav-link ${isActive ? 'is-active' : ''}`}
             >
-              Today's Menu
+              Home
             </NavLink>
-            <NavLink
-              to="/menu"
-              className={({ isActive }) => `nav-link ${isActive ? 'is-active' : ''}`}
+            <a
+              href="#menu-lineup"
+              onClick={(e) => handleSectionClick(e, 'menu-lineup')}
+              className="nav-link"
+            >
+              Menu
+            </a>
+            <a
+              href="#menu-lineup"
+              onClick={handleAllItemsClick}
+              className="nav-link"
             >
               All Items
-            </NavLink>
-            <a href="#campus-hubs" className="nav-link">
-              Campus Hubs
             </a>
-            <a href="#why-sebastian" className="nav-link">
-              Our Kitchen
+            <a
+              href="#about"
+              onClick={(e) => handleSectionClick(e, 'about')}
+              className="nav-link"
+            >
+              About
             </a>
           </nav>
 
@@ -71,7 +113,7 @@ export function Header() {
             <Link
               to="/menu?filter=favourites"
               className="action-icon-link"
-              aria-label={`View favourites (${favouritesCount} saved)`}
+              aria-label={`View saved favourites (${favouritesCount})`}
               title="Saved favourites"
             >
               <Heart size={20} strokeWidth={2.2} />
@@ -113,21 +155,34 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
           <nav className="mobile-nav-links">
-            <NavLink
+            <Link
               to="/"
-              end
-              className={({ isActive }) => `mobile-nav-link ${isActive ? 'is-active' : ''}`}
+              className="mobile-nav-link"
               onClick={closeMobileMenu}
             >
-              Today's Menu
-            </NavLink>
-            <NavLink
-              to="/menu"
-              className={({ isActive }) => `mobile-nav-link ${isActive ? 'is-active' : ''}`}
-              onClick={closeMobileMenu}
+              Home
+            </Link>
+            <a
+              href="#menu-lineup"
+              className="mobile-nav-link"
+              onClick={(e) => handleSectionClick(e, 'menu-lineup')}
             >
-              Explore Full Lineup
-            </NavLink>
+              Menu
+            </a>
+            <a
+              href="#menu-lineup"
+              className="mobile-nav-link"
+              onClick={handleAllItemsClick}
+            >
+              All Items
+            </a>
+            <a
+              href="#about"
+              className="mobile-nav-link"
+              onClick={(e) => handleSectionClick(e, 'about')}
+            >
+              About
+            </a>
             <Link
               to="/menu?filter=favourites"
               className="mobile-nav-link"

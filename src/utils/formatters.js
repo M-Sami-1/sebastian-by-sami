@@ -1,5 +1,5 @@
 /**
- * Utility formatters for SEBASTIAN Campus Canteen
+ * Utility formatters for SEBASTIAN by SAMI
  */
 
 /**
