@@ -4,18 +4,18 @@ import { CheckeredRibbon } from './CheckeredRibbon';
 
 export function AboutSection() {
   return (
-    <section className="about-brand-section" id="about" aria-label="About SEBASTIAN by SAMI">
+    <section className="about-brand-section" id="story" aria-label="Story of SEBASTIAN by SAMI">
       <CheckeredRibbon height={16} />
 
       <div className="section-container about-container">
         <div className="about-grid">
-          {/* Visual Column: Brand Logo & Food Artwork */}
+          {/* Visual Column: Brand Transparent Logo */}
           <div className="about-visual-col">
-            <div className="about-image-card">
+            <div className="about-logo-frame">
               <img
-                src="/assets/branding/logo.jpeg"
+                src="/assets/branding/logo.png"
                 alt="SEBASTIAN by SAMI"
-                className="about-brand-image"
+                className="about-brand-logo-img"
               />
               <div className="about-badge-tag">
                 <span className="badge-tag-text">INDEPENDENT KITCHEN</span>

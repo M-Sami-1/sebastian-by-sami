@@ -105,12 +105,16 @@ button {
 }
 
 /* --- Section Scroll Anchoring & Padding --- */
+#top,
 #menu-lineup,
+#story,
+#combos,
 #about,
 #why-sebastian,
 .menu-lineup-section,
+.combos-section,
 .about-brand-section {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 100px;
 }
 
 /* --- Layout Containers --- */
@@ -198,22 +202,25 @@ button {
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   text-decoration: none;
+  background: transparent !important;
+  border: none !important;
+}
+
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+  display: block;
 }
 
 .brand-crest {
-  width: 36px;
-  height: 36px;
-  background-color: var(--color-brand-red);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  border: 2px solid #111111;
-  box-shadow: 0 2px 6px rgba(224, 34, 30, 0.3);
-  flex-shrink: 0;
+  display: none;
 }
 
 .brand-text-block {
@@ -557,7 +564,7 @@ button {
   color: rgba(255, 255, 255, 0.88);
 }
 
-/* Hero Visual Column with Real Asset */
+/* Hero Visual Column with Real Asset on Cutting Board */
 .hero-visual-col {
   position: relative;
   display: flex;
@@ -565,46 +572,66 @@ button {
   align-items: center;
 }
 
+.hero-board-platform {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-image-wrapper {
   width: 100%;
   max-width: 440px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 3px solid #111111;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.35);
-  background-color: #201515;
+  border: 3.5px solid #111111;
+  box-shadow: 12px 14px 0px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 50% 55%, #2a1e1b 0%, #15100f 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-image-wrapper:hover {
-  transform: scale(1.02);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .hero-featured-img {
   width: 100%;
+  max-width: 380px;
   height: auto;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  object-position: center;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.55));
 }
 
 .hero-badge-price {
   position: absolute;
-  top: -10px;
-  right: -5px;
+  top: -14px;
+  right: -8px;
   background-color: var(--color-accent-yellow);
-  color: var(--color-dark-bg);
+  color: #111111;
   padding: 0.65rem 0.95rem;
   border-radius: 50%;
+  width: 82px;
+  height: 82px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  border: 3px solid #111111;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border: 3.5px solid #111111;
   transform: rotate(12deg);
-  z-index: 2;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.hero-board-platform:hover .hero-badge-price {
+  transform: rotate(16deg) scale(1.06);
 }
 
 .badge-prefix {
@@ -616,27 +643,32 @@ button {
 
 .badge-price {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .hero-stamp-badge {
   position: absolute;
-  bottom: -15px;
-  left: -5px;
+  bottom: -16px;
+  left: -8px;
   background-color: #FFFFFF;
   color: var(--color-brand-red);
   border-radius: 50%;
-  width: 76px;
-  height: 76px;
+  width: 82px;
+  height: 82px;
   border: 3px dashed var(--color-brand-red);
   display: flex;
   align-items: center;
   justify-content: center;
   transform: rotate(-10deg);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.hero-board-platform:hover .hero-stamp-badge {
+  transform: rotate(-6deg) scale(1.06);
 }
 
 .stamp-inner {
@@ -648,15 +680,17 @@ button {
 
 .stamp-text {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: -0.02em;
+  color: var(--color-brand-red);
 }
 
 .stamp-sub {
-  font-size: 0.48rem;
+  font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  color: #111111;
 }
 
 /* Marquee Ticker Tape Ribbon */
@@ -2491,6 +2525,262 @@ button {
 }
 
 /* ==========================================================================
+   Combos & Deals Section
+   ========================================================================== */
+.combos-section {
+  padding: 4.5rem 0 3.5rem;
+  background-color: var(--color-bg-paper);
+  border-top: 2px solid #111111;
+  border-bottom: 2px solid #111111;
+  scroll-margin-top: 100px;
+}
+
+.combos-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.combos-eyebrow-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-brand-red);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.85rem;
+}
+
+.combos-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  margin-bottom: 0.85rem;
+}
+
+.combos-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.combos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.combo-card {
+  background-color: #FFFFFF;
+  border: 2px solid #111111;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 8px 8px 0px #111111;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.combo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 12px 12px 0px #111111;
+}
+
+.combo-image-holder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background-color: #1a1414;
+  border-bottom: 2px solid #111111;
+}
+
+.combo-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.combo-card:hover .combo-card-img {
+  transform: scale(1.05);
+}
+
+.combo-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  border: 1.5px solid #111111;
+}
+
+.badge-gold {
+  background-color: var(--color-accent-yellow);
+  color: #111111;
+}
+
+.badge-red {
+  background-color: var(--color-brand-red);
+  color: #FFFFFF;
+}
+
+.badge-dark {
+  background-color: var(--color-dark-bg);
+  color: #FFFFFF;
+}
+
+.combo-savings-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: #2ECC71;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #111111;
+  box-shadow: 2px 2px 0px #111111;
+}
+
+.combo-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.combo-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-main);
+}
+
+.combo-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 1.15rem;
+}
+
+.combo-items-list {
+  background-color: var(--color-bg-paper);
+  border: 1.5px dashed #111111;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.combo-includes-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-red);
+  margin-bottom: 0.4rem;
+}
+
+.combo-items-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.combo-items-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.bullet-flame {
+  color: var(--color-brand-red);
+  flex-shrink: 0;
+}
+
+.combo-pricing-bar {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1.5px solid #ECECEC;
+}
+
+.combo-prices {
+  display: flex;
+  flex-direction: column;
+}
+
+.combo-original-price {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.combo-deal-price {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--color-brand-red);
+  line-height: 1;
+}
+
+.btn-combo-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--color-dark-bg);
+  color: #FFFFFF;
+  border: 2px solid #111111;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-combo-add:hover {
+  background-color: var(--color-brand-red);
+  border-color: var(--color-brand-red);
+  transform: translateY(-2px);
+}
+
+.btn-combo-add.is-added {
+  background-color: #2ECC71;
+  border-color: #2ECC71;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
    About Section (SEBASTIAN by SAMI)
    ========================================================================== */
 .about-brand-section {
@@ -2511,21 +2801,35 @@ button {
   align-items: center;
 }
 
+.about-logo-frame,
 .about-image-card {
   position: relative;
-  background-color: var(--color-bg-paper);
-  border: 2px solid #111111;
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: 8px 8px 0px #111111;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.about-brand-logo-img,
 .about-brand-image {
-  max-width: 100%;
+  max-width: 290px;
+  width: 100%;
   height: auto;
-  border-radius: var(--radius-md);
-  margin: 0 auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.about-brand-logo-img:hover {
+  transform: scale(1.04) rotate(1deg);
 }
 
 .about-badge-tag {
@@ -3256,6 +3560,48 @@ button {
 
   .header-main-container {
     padding: 0.6rem 0.85rem;
+  }
+
+  .brand-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .hero-board-platform {
+    max-width: 330px;
+  }
+
+  .hero-badge-price {
+    width: 70px;
+    height: 70px;
+    top: -10px;
+    right: -5px;
+  }
+
+  .badge-price {
+    font-size: 1.05rem;
+  }
+
+  .hero-stamp-badge {
+    width: 70px;
+    height: 70px;
+    bottom: -10px;
+    left: -5px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
   }
 
   .header-actions {

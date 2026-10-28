@@ -68,9 +68,6 @@ export function Footer() {
             <p className="footer-mission">
               Loud flavor. Real mood. Fresh smashed patties, slow-cooked curries, and house spice blends made to order.
             </p>
-            <div className="footer-hours-pill">
-              <span className="hours-dot"></span> Kitchen Open Daily: 11:00 AM – 11:30 PM
-            </div>
           </div>
 
           {/* Menu Col */}
@@ -90,7 +87,9 @@ export function Footer() {
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
               <li><Link to="/">Home</Link></li>
-              <li><a href="#about">About SEBASTIAN</a></li>
+              <li><a href="#menu-lineup">Menu</a></li>
+              <li><a href="#story">Story</a></li>
+              <li><a href="#combos">Combos</a></li>
               <li><Link to="/menu?filter=favourites">Saved Favourites</Link></li>
               <li><Link to="/cart">View Cart</Link></li>
             </ul>

@@ -221,7 +221,7 @@
     "category": "Drinks",
     "description": "Rich, strong brewed black tea simmered with whole milk, crushed green cardamom pods, and cinnamon. Served piping hot in a clay cup.",
     "price": 70,
-    "image": "/assets/food/chai.avif",
+    "image": "/assets/food/chai.webp",
     "isAvailable": true,
     "badge": "All-Day Roast",
     "mood": "Late night",

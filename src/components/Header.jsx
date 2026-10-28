@@ -25,17 +25,25 @@ export function Header() {
     closeMobileMenu();
 
     if (location.pathname !== '/') {
-      navigate('/' + (sectionId ? `#${sectionId}` : ''));
+      navigate('/' + (sectionId && sectionId !== 'top' ? `#${sectionId}` : ''));
       setTimeout(() => {
+        if (!sectionId || sectionId === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }, 100);
+    } else {
+      if (!sectionId || sectionId === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
         const el = document.getElementById(sectionId);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100);
-    } else {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   };
@@ -64,26 +72,28 @@ export function Header() {
       {/* Main Navigation Bar */}
       <div className="header-main-container">
         <div className="header-inner">
-          {/* Brand Identity: SEBASTIAN by SAMI */}
-          <Link to="/" className="brand-link" onClick={closeMobileMenu}>
-            <div className="brand-crest">
-              <Flame size={20} className="brand-flame-icon" />
-            </div>
+          {/* Brand Identity: SEBASTIAN by SAMI with real transparent logo */}
+          <Link to="/" className="brand-link" onClick={(e) => handleSectionClick(e, 'top')}>
+            <img
+              src="/assets/branding/logo.png"
+              alt="SEBASTIAN by SAMI"
+              className="brand-logo-img"
+            />
             <div className="brand-text-block">
               <span className="brand-name">SEBASTIAN</span>
               <span className="brand-subtitle">BY SAMI</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links: Exactly Home, Menu, Story, Combos */}
           <nav className="desktop-nav" aria-label="Primary navigation">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) => `nav-link ${isActive ? 'is-active' : ''}`}
+            <a
+              href="#top"
+              onClick={(e) => handleSectionClick(e, 'top')}
+              className="nav-link"
             >
               Home
-            </NavLink>
+            </a>
             <a
               href="#menu-lineup"
               onClick={(e) => handleSectionClick(e, 'menu-lineup')}
@@ -92,18 +102,18 @@ export function Header() {
               Menu
             </a>
             <a
-              href="#menu-lineup"
-              onClick={handleAllItemsClick}
+              href="#story"
+              onClick={(e) => handleSectionClick(e, 'story')}
               className="nav-link"
             >
-              All Items
+              Story
             </a>
             <a
-              href="#about"
-              onClick={(e) => handleSectionClick(e, 'about')}
+              href="#combos"
+              onClick={(e) => handleSectionClick(e, 'combos')}
               className="nav-link"
             >
-              About
+              Combos
             </a>
           </nav>
 
@@ -155,13 +165,13 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
           <nav className="mobile-nav-links">
-            <Link
-              to="/"
+            <a
+              href="#top"
               className="mobile-nav-link"
-              onClick={closeMobileMenu}
+              onClick={(e) => handleSectionClick(e, 'top')}
             >
               Home
-            </Link>
+            </a>
             <a
               href="#menu-lineup"
               className="mobile-nav-link"
@@ -170,18 +180,18 @@ export function Header() {
               Menu
             </a>
             <a
-              href="#menu-lineup"
+              href="#story"
               className="mobile-nav-link"
-              onClick={handleAllItemsClick}
+              onClick={(e) => handleSectionClick(e, 'story')}
             >
-              All Items
+              Story
             </a>
             <a
-              href="#about"
+              href="#combos"
               className="mobile-nav-link"
-              onClick={(e) => handleSectionClick(e, 'about')}
+              onClick={(e) => handleSectionClick(e, 'combos')}
             >
-              About
+              Combos
             </a>
             <Link
               to="/menu?filter=favourites"

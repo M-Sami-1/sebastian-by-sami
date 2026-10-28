@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from '
 
 const CartContext = createContext(null);
 
-const CART_STORAGE_KEY = 'sebastian_canteen_cart_v1';
+const CART_STORAGE_KEY = 'sebastian_by_sami_cart_v1';
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
@@ -141,7 +141,7 @@ export function CartProvider({ children }) {
     return cart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0);
   }, [cart]);
 
-  // Campus canteen perks: 0 delivery fee for campus pickup, 0 tax
+  // Brand perks: 0 delivery fee for counter pickup, 0 tax
   const deliveryFee = 0;
   const tax = 0;
   const totalPrice = subtotal;

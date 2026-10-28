@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const FavouritesContext = createContext(null);
 
-const FAVOURITES_STORAGE_KEY = 'sebastian_canteen_favourites_v1';
+const FAVOURITES_STORAGE_KEY = 'sebastian_by_sami_favourites_v1';
 
 export function FavouritesProvider({ children }) {
   const [favourites, setFavourites] = useState(() => {

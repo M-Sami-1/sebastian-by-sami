@@ -7,6 +7,7 @@ import { MenuList } from '../components/MenuList';
 import { HeroBanner } from '../components/HeroBanner';
 import { MoodShowcase } from '../components/MoodShowcase';
 import { WhyItTastesLikeThat } from '../components/WhyItTastesLikeThat';
+import { CombosSection } from '../components/CombosSection';
 import { AboutSection } from '../components/AboutSection';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
@@ -213,10 +214,13 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
         </div>
       </section>
 
+      {/* Special Deals & Combos Section */}
+      <CombosSection />
+
       {/* Quality Standards Section */}
       <WhyItTastesLikeThat />
 
-      {/* Proper About Section for SEBASTIAN by SAMI */}
+      {/* Story / About Section for SEBASTIAN by SAMI */}
       <AboutSection />
     </div>
   );
