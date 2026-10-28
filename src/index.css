@@ -1799,6 +1799,64 @@ button {
   border-color: var(--color-brand-red);
 }
 
+/* Customer name input */
+.name-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.name-input-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.name-input {
+  width: 100%;
+  background-color: var(--color-bg-paper);
+  border: 1.5px solid #111111;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem 0.6rem 2.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.name-input:focus {
+  border-color: var(--color-brand-red);
+}
+
+.name-input.input-error {
+  border-color: var(--color-brand-red);
+  background-color: #FFF5F5;
+}
+
+.input-error-msg {
+  font-size: 0.78rem;
+  color: var(--color-brand-red);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+/* Receipt customer name line */
+.receipt-customer-name {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
+}
+
+/* Modal customer greeting */
+.modal-customer-greeting {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.45;
+  margin-top: 0.25rem;
+}
+
 /* Retro Paper Receipt Component */
 .retro-receipt-container {
   background-color: #FFFFFF;

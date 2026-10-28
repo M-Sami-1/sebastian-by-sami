@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Trash2, ShoppingBag, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Trash2, ShieldCheck, User } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { CartItem } from './CartItem';
 import { EmptyState } from './EmptyState';
@@ -20,15 +20,26 @@ export function Cart() {
     totalPrice
   } = useCart();
 
-  const [selectedHub, setSelectedHub] = useState('Main Kitchen Counter');
+  const [selectedHub, setSelectedHub] = useState('Main Kitchen Counter (Downtown Central)');
   const [instructions, setInstructions] = useState('');
+  const [customerName, setCustomerName] = useState('');
+  const [nameError, setNameError] = useState(false);
   const [completedOrder, setCompletedOrder] = useState(null);
 
   const handleCheckout = () => {
     if (cart.length === 0) return;
 
+    if (!customerName.trim()) {
+      setNameError(true);
+      document.getElementById('customer-name-input')?.focus();
+      return;
+    }
+
+    setNameError(false);
+
     const order = {
       orderId: 'SEB-' + Math.floor(1000 + Math.random() * 9000),
+      customerName: customerName.trim(),
       totalItems: totalCount,
       totalPrice: totalPrice,
       pickupHub: selectedHub,
@@ -96,9 +107,34 @@ export function Cart() {
               ))}
             </div>
 
-            {/* Pickup Preferences */}
+            {/* Order Preferences */}
             <div className="cart-pickup-preferences">
-              <label htmlFor="order-pickup-location" className="preference-label">
+
+              {/* Customer Name — required */}
+              <label htmlFor="customer-name-input" className="preference-label">
+                Your Name (required for receipt):
+              </label>
+              <div className="name-input-wrapper">
+                <User size={16} className="name-input-icon" />
+                <input
+                  id="customer-name-input"
+                  type="text"
+                  placeholder="Enter your name..."
+                  className={`name-input ${nameError ? 'input-error' : ''}`}
+                  value={customerName}
+                  onChange={(e) => {
+                    setCustomerName(e.target.value);
+                    if (e.target.value.trim()) setNameError(false);
+                  }}
+                  maxLength={48}
+                  autoComplete="name"
+                />
+              </div>
+              {nameError && (
+                <p className="input-error-msg">Please enter your name before placing the order.</p>
+              )}
+
+              <label htmlFor="order-pickup-location" className="preference-label" style={{ marginTop: '1rem' }}>
                 Select Pick-Up Location:
               </label>
               <select
@@ -140,6 +176,7 @@ export function Cart() {
             subtotal={subtotal}
             totalPrice={totalPrice}
             pickupLocation={selectedHub}
+            customerName={customerName}
           />
 
           <div className="cart-checkout-actions">
@@ -153,7 +190,7 @@ export function Cart() {
 
             <div className="checkout-guarantee">
               <ShieldCheck size={16} className="guarantee-icon" />
-              <span>Hot & ready for pickup in ~10-12 mins · Card or cash at counter</span>
+              <span>Hot &amp; ready for pickup in ~10-12 mins · Card or cash at counter</span>
             </div>
           </div>
         </div>

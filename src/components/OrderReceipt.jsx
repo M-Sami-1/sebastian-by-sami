@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatCurrency } from '../utils/formatters';
 
-export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLocation = 'Main Counter' }) {
+export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLocation = 'Main Counter', customerName = '' }) {
   const orderNumber = 'SEB-' + Math.floor(1000 + Math.random() * 9000);
   const now = new Date();
   const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -17,6 +17,11 @@ export function OrderReceipt({ cart = [], subtotal = 0, totalPrice = 0, pickupLo
             <span>Ticket #{orderNumber}</span>
             <span>{timeString}</span>
           </div>
+          {customerName.trim() && (
+            <div className="receipt-customer-name">
+              For: <strong>{customerName.trim()}</strong>
+            </div>
+          )}
           <div className="receipt-pickup-hub">
             Pick-up: <strong>{pickupLocation}</strong>
           </div>

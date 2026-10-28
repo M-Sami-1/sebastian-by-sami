@@ -56,9 +56,16 @@ export function OrderSuccessModal({ orderDetails, onClose }) {
           </div>
 
           <h3 id="order-success-title" className="modal-title">ORDER RECEIVED</h3>
-          <p className="modal-subtitle">
-            Your ticket is sizzling on the 230°C flat top.
-          </p>
+          {orderDetails.customerName && (
+            <p className="modal-customer-greeting">
+              Thanks, <strong>{orderDetails.customerName}</strong>! Your ticket is sizzling on the 230°C flat top.
+            </p>
+          )}
+          {!orderDetails.customerName && (
+            <p className="modal-subtitle">
+              Your ticket is sizzling on the 230°C flat top.
+            </p>
+          )}
 
           <div className="modal-pickup-card">
             <div className="pickup-token">
@@ -78,6 +85,12 @@ export function OrderSuccessModal({ orderDetails, onClose }) {
             </div>
 
             <div className="modal-order-summary">
+              {orderDetails.customerName && (
+                <div className="summary-row">
+                  <span>Recipient:</span>
+                  <strong>{orderDetails.customerName}</strong>
+                </div>
+              )}
               <div className="summary-row">
                 <span>Items Ordered:</span>
                 <strong>{orderDetails.totalItems} {orderDetails.totalItems === 1 ? 'item' : 'items'}</strong>

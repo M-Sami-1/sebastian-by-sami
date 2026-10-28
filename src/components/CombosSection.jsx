@@ -36,7 +36,7 @@ const COMBOS_DATA = [
     name: "Sindhi Biryani Royal Duo",
     badge: "CHEF SPECIAL",
     badgeColor: "red",
-    image: "/assets/food/chicken-baryani.jpg",
+    image: "/assets/food/chicken-baryani.webp",
     description: "Slow-simmered basmati rice layered with tender spiced chicken, accompanied by crispy samosa chaat and hot tea.",
     itemsIncluded: [
       "Sindhi Dum Biryani Special",
@@ -51,7 +51,7 @@ const COMBOS_DATA = [
       name: "Sindhi Dum Biryani Special",
       price: 370,
       category: "Main Course",
-      image: "/assets/food/chicken-baryani.jpg",
+      image: "/assets/food/chicken-baryani.webp",
       description: "Fragrant long-grain aged basmati rice slow-cooked with bone-in spiced chicken."
     },
     sideItems: [
