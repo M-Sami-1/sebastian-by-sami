@@ -26,13 +26,8 @@ export function MoodShowcase({ featuredItem }) {
   return (
     <section className="mood-showcase-section" aria-label="Featured Pick">
       <div className="mood-showcase-card">
-        {/* Visual Dish Column */}
+        {/* Clean image column — no nested boxes */}
         <div className="showcase-visual-col">
-          <div className="showcase-price-tag">
-            <span className="price-tag-prefix">Only</span>
-            <span className="price-tag-value">Rs. {featuredItem.price}</span>
-          </div>
-
           <Link to={`/item/${featuredItem.id}`} className="showcase-image-link">
             <img
               src={featuredItem.image}
@@ -42,7 +37,7 @@ export function MoodShowcase({ featuredItem }) {
           </Link>
         </div>
 
-        {/* Dish Stats Card Column */}
+        {/* Black Stats Card Column */}
         <div className="showcase-details-col">
           <div className="showcase-header-row">
             <span className="showcase-badge">{featuredItem.badge || 'House Favorite'}</span>
@@ -59,6 +54,11 @@ export function MoodShowcase({ featuredItem }) {
           <h3 className="showcase-title">
             <Link to={`/item/${featuredItem.id}`}>{featuredItem.name}</Link>
           </h3>
+
+          {/* Price — shown cleanly inside the details card */}
+          <p className="showcase-price-line">
+            Rs. {featuredItem.price}
+          </p>
 
           <p className="showcase-description">{featuredItem.description}</p>
 
