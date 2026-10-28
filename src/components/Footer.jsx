@@ -37,6 +37,11 @@ export function Footer() {
     }, 120);
   };
 
+  const goToFavourites = (e) => {
+    e.preventDefault();
+    navigate('/menu?filter=favourites#menu-lineup');
+  };
+
   return (
     <footer className="site-footer">
       {/* Drop Alert Newsletter section */}
@@ -113,7 +118,7 @@ export function Footer() {
               <li><a href="/#menu-lineup" onClick={(e) => goToSection(e, 'menu-lineup')}>Menu</a></li>
               <li><a href="/#story" onClick={(e) => goToSection(e, 'story')}>Story</a></li>
               <li><a href="/#combos" onClick={(e) => goToSection(e, 'combos')}>Combos</a></li>
-              <li><Link to="/menu?filter=favourites">Saved Favourites</Link></li>
+              <li><Link to="/menu?filter=favourites#menu-lineup" onClick={goToFavourites}>Saved Favourites</Link></li>
               <li><Link to="/cart">View Cart</Link></li>
             </ul>
           </div>

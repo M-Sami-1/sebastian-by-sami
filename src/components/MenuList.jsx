@@ -7,9 +7,29 @@ export function MenuList({
   activeCategory = 'All',
   activeMood = '',
   searchQuery = '',
+  onlyFavourites = false,
+  favouritesCount = 0,
   onResetFilters
 }) {
   if (items.length === 0) {
+    if (onlyFavourites) {
+      const hasSavedFavourites = favouritesCount > 0;
+
+      return (
+        <EmptyState
+          type="favourite"
+          title={hasSavedFavourites ? 'No saved dishes match these filters' : 'No favourites saved yet'}
+          description={
+            hasSavedFavourites
+              ? 'Clear the current filters to see all of your saved dishes.'
+              : 'Tap the heart on any dish to save it here for next time.'
+          }
+          actionLabel={hasSavedFavourites ? 'Clear filters' : 'Browse the full menu'}
+          onActionClick={onResetFilters}
+        />
+      );
+    }
+
     return (
       <EmptyState
         type="search"

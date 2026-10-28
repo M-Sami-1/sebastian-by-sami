@@ -31,19 +31,13 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
 
   const menuSectionRef = useRef(null);
 
-  // Sync with URL query params if changed externally (e.g. from nav clicks)
+  // Treat URL filters as the source of truth when entering the menu from navigation.
   useEffect(() => {
     const filterParam = searchParams.get('filter');
-    if (filterParam === 'favourites') {
-      setOnlyFavourites(true);
-    } else if (filterParam === null && onlyFavourites) {
-      setOnlyFavourites(false);
-    }
-
-    const catParam = searchParams.get('category');
-    if (catParam) {
-      setSelectedCategory(catParam);
-    }
+    setOnlyFavourites(filterParam === 'favourites');
+    setSelectedCategory(searchParams.get('category') || 'All');
+    setSelectedMood(searchParams.get('mood') || '');
+    setSearchQuery(searchParams.get('q') || '');
   }, [searchParams]);
 
   // Compute category item counts
@@ -209,6 +203,8 @@ export function MenuPage({ menu = [], loading = false, error = null, onRetry }) 
             activeCategory={selectedCategory}
             activeMood={selectedMood}
             searchQuery={searchQuery}
+            onlyFavourites={onlyFavourites}
+            favouritesCount={favouritesCount}
             onResetFilters={handleResetFilters}
           />
         </div>

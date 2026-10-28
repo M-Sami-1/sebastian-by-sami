@@ -60,6 +60,12 @@ export function Header() {
     }, 100);
   };
 
+  const handleFavouritesClick = (e) => {
+    e.preventDefault();
+    closeMobileMenu();
+    navigate('/menu?filter=favourites#menu-lineup');
+  };
+
   return (
     <header className="site-header">
       {/* Top Announcement Bar - Clean, No Emojis */}
@@ -121,8 +127,9 @@ export function Header() {
           <div className="header-actions">
             {/* Favourites Shortcut */}
             <Link
-              to="/menu?filter=favourites"
+              to="/menu?filter=favourites#menu-lineup"
               className="action-icon-link"
+              onClick={handleFavouritesClick}
               aria-label={`View saved favourites (${favouritesCount})`}
               title="Saved favourites"
             >
@@ -194,9 +201,9 @@ export function Header() {
               Combos
             </a>
             <Link
-              to="/menu?filter=favourites"
+              to="/menu?filter=favourites#menu-lineup"
               className="mobile-nav-link"
-              onClick={closeMobileMenu}
+              onClick={handleFavouritesClick}
             >
               Favourites ({favouritesCount})
             </Link>

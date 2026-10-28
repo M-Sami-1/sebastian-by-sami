@@ -7,6 +7,8 @@
 
 A high-performance, responsive React web application for **SEBASTIAN by SAMI**. Designed with a punchy, bold visual personality inspired by modern street food and independent kitchen culture, the platform provides diners with seamless menu exploration, mood-based filtering, item customization, instant cart calculations, and online pickup ordering.
 
+New contributors can follow the dedicated [Setup and Run Guide](SETUP.md) for installation, development, and production preview steps.
+
 ---
 
 ## 🌟 Key Features
